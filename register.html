@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>登录页面</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/register.css">
+</head>
+
+<body>
+	<div class="register_box">
+		<div class="logo">
+			<img src="./img/register/img-1_03.png" alt="">
+		</div>
+		<input id="username" class="name" type="text" placeholder="用户名">
+		<input id="password" class="password" type="password" placeholder="请输入密码">
+		<div id="login" class="button_new_folder">登录</div>
+		<div class="account_number">
+			<span>忘记密码?</span>
+			<span>注册</span>
+		</div>
+		<div class="Choose_another_way">
+			<div class="line"></div>
+			<div class="content">其他登陆方式</div>
+			<div class="line"></div>
+		</div>
+		<div class="icon_box">
+			<div><img src="./img/register/未标题-1_09.png" alt="">
+				<div class="icon_name">微信</div>
+			</div>
+			<div class="middle"><img src="./img/register/未标题-1_06.png" alt="">
+				<div class="icon_name">QQ</div>
+			</div>
+			<div><img src="./img/register/未标题-1_12.png" alt="">
+				<div class="icon_name">微博</div>
+			</div>
+		</div>
+	</div>
+	<script src="./js/axios.min.js"></script>
+	<script src="./js/axios.config.js"></script>
+	<script>
+		var oUsername = document.querySelector("#username")
+		var oPassword = document.querySelector("#password")
+		var oLogin = document.querySelector("#login")
+		var username_regular = /\w{3,}/
+		var password_regular = /\d{3,}/
+		var username_hint = "请输入至少三个字符"
+		var password_hint = "请输入至少三个数字"
+		function validate_form(input_field, str_regular, hint) {
+			input_field.addEventListener('change', function () {
+				var us_content = input_field.value
+				var result = str_regular.test(us_content)
+				if (result) {
+					input_field.style.borderColor = "green"
+				} else {
+					input_field.style.borderColor = "red"
+					alert(hint)
+				}
+				this.state = result
+			})
+		}
+		validate_form(oUsername, username_regular, username_hint)
+		validate_form(oPassword, password_regular, password_hint)
+		oLogin.addEventListener('click', function () {
+			if (oUsername.state && oPassword.state) {
+				var name = oUsername.value
+				var pwd = oPassword.value
+				axios.post("/user/login",{
+					username:name,
+					password:pwd
+				}).then(function(res){
+					if (!res.status) {
+							//登录失败
+							alert(res.msg)
+						}else{
+							sessionStorage.id = res.data.id
+							sessionStorage.token = res.data.token
+							location.assign("./index.html")
+						}
+				})
+			}
+		})
+	</script>
+</body>
+
+</html>

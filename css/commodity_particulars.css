@@ -1,0 +1,396 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.87vw 5.2vw;
+  align-items: center;
+}
+.header .icon_get {
+  width: 2.67vw;
+  height: 4.67vw;
+}
+.header .icon_homepage {
+  width: 5.33vw;
+  height: 4.8vw;
+}
+.header .icon_back {
+  margin-left: 3vw;
+  width: 4.4vw;
+  height: 4.4vw;
+}
+.header .text_merchandise {
+  display: inline-block;
+  padding: 2.13vw 5.87vw 2.27vw;
+  font-size: 3.73vw;
+  color: #fefefe;
+  background-color: #7f7f7f;
+  border-radius: 1.07vw 0vw 0vw 1.07vw;
+}
+.header .text_particulars {
+  display: inline-block;
+  padding: 2.13vw 5.87vw 2.27vw;
+  font-size: 3.73vw;
+  color: #555555;
+  border: solid 0.13vw #c3c3c3;
+  border-radius: 0 1.07vw 1.07vw 0;
+}
+.commodity_introduce .commodity_banner {
+  width: 100vw;
+}
+.commodity_introduce .content {
+  padding: 3.33vw 3.33vw 4.13vw;
+  display: flex;
+  justify-content: space-between;
+}
+.commodity_introduce .title {
+  font-size: 4.53vw;
+  color: #555555;
+  padding-bottom: 2vw;
+  width: 79vw;
+}
+.commodity_introduce .text {
+  font-size: 3.46vw;
+  color: #999999;
+  padding-bottom: 2vw;
+}
+.commodity_introduce .price {
+  font-size: 5.33vw;
+  color: #c55a5c;
+}
+.commodity_introduce .quantity {
+  font-size: 4.8vw;
+  color: #c55a5c;
+  padding-bottom: 2vw;
+}
+.commodity_introduce .evaluate_text {
+  font-size: 3.2vw;
+  color: #c55a5c;
+  padding-bottom: 2vw;
+}
+.commodity_introduce .examine {
+  font-size: 3.2vw;
+  color: #999999;
+  border-radius: 0.67vw;
+  border: solid 0.13vw #c3c3c3;
+  padding: 0.8vw 3.2vw;
+}
+.gray_block {
+  height: 2.67vw;
+  background-color: #f4f4f4;
+}
+.single_list .single_text {
+  padding: 5.2vw 3.47vw 4.67vw 3.47vw;
+  font-size: 3.47vw;
+  color: #555555;
+  border-bottom: 0.27vw solid #e8e8e8;
+  display: flex;
+  justify-content: space-between;
+}
+.single_list .single_text span {
+  color: #c55a5c;
+}
+.single_list .single_text img {
+  width: 1.87vw;
+  height: 3.2vw;
+}
+.single_list .single_content {
+  display: flex;
+  justify-content: space-between;
+  padding: 3.6vw 3.47vw 3.6vw 0;
+}
+.single_content .text {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 70vw;
+}
+.single_content .text_serve {
+  font-size: 3.47vw;
+  color: #555555;
+  margin-left: 3.6vw;
+}
+.single_content .text_free_shipping {
+  margin-left: 18.5vw;
+}
+.single_content .arrows_right {
+  width: 1.87vw;
+  height: 3.2vw;
+  margin-top: 3.2vw;
+}
+.single_content .text {
+  font-size: 3.2vw;
+  color: #999999;
+}
+.user_evaluation .evaluation_title {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 0.27vw #e8e8e8;
+}
+.evaluation_title .title {
+  font-size: 3.47vw;
+  color: #555555;
+}
+.evaluation_title .content img {
+  width: 1.87vw;
+  height: 3.2vw;
+  margin: 1.5vw 0 0 3vw;
+}
+.evaluation_title .content {
+  font-size: 3.2vw;
+  color: #999999;
+}
+.user_evaluation {
+  padding: 0 3.47vw;
+}
+.user_evaluation .evaluation_title {
+  padding: 4.53vw 0;
+}
+.evaluation_show .user {
+  width: 28.13vw;
+  height: 9.33vw;
+}
+.evaluation_show .star_level {
+  width: 28.93vw;
+  height: 5.87vw;
+}
+.evaluation_show .date {
+  font-size: 2.93vw;
+  color: #999999;
+  margin: 2.8vw 0 4.4vw 0;
+}
+.evaluation_show .content {
+  font-size: 3.2vw;
+  color: #555555;
+}
+.evaluation_show .evaluation_img {
+  width: 23.33vw;
+  margin-top: 4vw;
+}
+.commodity_details {
+  text-align: center;
+}
+.commodity_details .title {
+  padding: 4.93vw 42.93vw 4.4vw 43.07vw;
+  font-size: 3.47vw;
+  color: #c55a5c;
+  border-bottom: solid 0.27vw #e8e8e8;
+}
+.commodity_details .showcase_big_img {
+  width: 98.67vw;
+  margin-left: 1.33vw;
+}
+.commodity_details .showcase_one {
+  font-size: 2.8vw;
+  color: #999999;
+}
+.commodity_details .showcase_two .title_showcase {
+  font-size: 4.6vw;
+  color: #555555;
+  margin: 6.6vw 0 3.4vw 0;
+}
+.showcase_two .text_showcase {
+  font-size: 2.8vw;
+  color: #999999;
+  margin-bottom: 6vw;
+}
+.showcase_one .introduction_one {
+  margin: 8vw 0 2.2vw 0;
+}
+.showcase_one .introduction_two {
+  margin-bottom: 8vw;
+}
+.commodity_details .showcase_three {
+  font-size: 0;
+}
+.showcase_three img {
+  width: 48.8vw;
+  margin-left: 1.2vw;
+}
+.fixed_purchase {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: -0.5vw;
+}
+.fixed_purchase .icon {
+  width: 12.4vw;
+  height: 12.24vw;
+  line-height: 15.24vw;
+  box-sizing: border-box;
+  border-right: 0.13vw solid #999;
+  border-bottom: 0.13vw solid #999;
+  text-align: center;
+  background-color: #fff;
+}
+.fixed_purchase .icon img {
+  width: 5.2vw;
+}
+.fixed_purchase .shopping_trolley {
+  width: 31.4vw;
+  height: 12.24vw;
+  line-height: 12.24vw;
+  font-size: 3.6vw;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-bottom: 0.13vw solid #999;
+}
+.fixed_purchase .purchase {
+  width: 31.4vw;
+  height: 12.24vw;
+  line-height: 12.24vw;
+  font-size: 3.6vw;
+  text-align: center;
+  background-color: #c55a5c;
+  color: #fff;
+}
+.fixed_assist {
+  height: 12.24vw;
+}
+.pop-up_lucency{
+  z-index: 2;
+}
+.pop-up_lucency .close {
+  right: 3.73vw;
+  top: 3.73vw;
+  position: absolute;
+  width: 5.07vw;
+  height: 5.47vw;
+}
+.pop-up_lucency {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 0;
+  display: none;
+}
+.pop-up_lucency .pop-up {
+  position: absolute;
+  width: 100vw;
+  height: 115.33vw;
+  bottom: 0;
+  background-color: #fff;
+}
+.pop-up .pop-up_head {
+  width: 53.53vw;
+  display: flex;
+  justify-content: space-between;
+}
+.pop-up_head .pop-up_img {
+  width: 23.6vw;
+  height: 23.6vw;
+  margin: 5.6vw 0 0 2.8vw;
+}
+.pop-up_head .content {
+  margin-top: 19.33vw;
+}
+.pop-up_head .price {
+  font-size: 3.47vw;
+  color: #c55a5c;
+}
+.pop-up_head .text {
+  font-size: 3.47vw;
+  color: #555555;
+}
+.pop-up .parameter_color {
+  margin: 6.13vw 0 0 2.8vw;
+}
+.parameter_color .title {
+  font-size: 3.47vw;
+  color: #555555;
+  margin-bottom: 2.8vw;
+}
+.parameter_color .chexked_property {
+  display: inline-block;
+  background-color: #c55a5c;
+  border-radius: 1.07vw;
+  font-size: 3.2vw;
+  color: #ffffff;
+  padding: 3.07vw 3.07vw 3.07vw 3.33vw;
+  margin-right: 4vw;
+}
+.parameter_color .not_property {
+  box-sizing: border-box;
+  border-radius: 1.07vw;
+  border: solid 0.27vw #d1d1d1;
+  font-size: 3.2vw;
+  color: #777777;
+  display: inline-block;
+  padding: 3.07vw 3.07vw 3.07vw 3.33vw;
+}
+.pop-up .parameter_size {
+  margin: 6.13vw 0 0 2.8vw;
+}
+.parameter_size .title {
+  font-size: 3.47vw;
+  color: #555555;
+  margin-bottom: 2.8vw;
+}
+.parameter_size .chexked_property {
+  display: inline-block;
+  background-color: #c55a5c;
+  border-radius: 1.07vw;
+  font-size: 3.2vw;
+  color: #ffffff;
+  padding: 3.07vw 3.07vw 3.07vw 3.33vw;
+}
+.parameter_size .not_property {
+  box-sizing: border-box;
+  border-radius: 1.07vw;
+  border: solid 0.27vw #d1d1d1;
+  font-size: 3.2vw;
+  color: #777777;
+  display: inline-block;
+  padding: 3.07vw 3.07vw 3.07vw 3.33vw;
+  margin-right: 4vw;
+}
+.pop-up .parameter_quantity {
+  margin: 6.13vw 0 0 2.8vw;
+}
+.parameter_quantity .title {
+  font-size: 3.47vw;
+  color: #555555;
+  margin-bottom: 2.8vw;
+}
+.parameter_quantity .property_box {
+  font-size: 0;
+}
+.parameter_quantity .subtract {
+  display: inline-block;
+  width: 12.8vw;
+  height: 9.2vw;
+  border: solid 0.27vw #e2e2e2;
+  font-size: 4.53vw;
+  color: #cccccc;
+  text-align: center;
+  line-height: 9.2vw;
+}
+.parameter_quantity .value {
+  font-size: 3.47vw;
+  color: #777777;
+  width: 17.6vw;
+  height: 9.2vw;
+  border: solid 0.27vw #d1d1d1;
+  display: inline-block;
+  text-align: center;
+  line-height: 10.2vw;
+}
+.parameter_quantity .add {
+  display: inline-block;
+  width: 12.8vw;
+  height: 9.2vw;
+  border: solid 0.27vw #e2e2e2;
+  font-size: 4.53vw;
+  color: #cccccc;
+  text-align: center;
+  line-height: 9.2vw;
+}
+.pop-up .ack_button {
+  display: inline-block;
+  font-size: 3.73vw;
+  color: #ffffff;
+  background-color: #c55a5c;
+  border-radius: 1.07vw;
+  padding: 2.8vw 43.33vw 2.8vw 43.2vw;
+  margin: 4.1vw 0 0 3.33vw;
+}

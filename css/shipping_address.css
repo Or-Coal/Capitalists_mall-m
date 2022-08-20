@@ -1,0 +1,87 @@
+.header .arrow {
+	width: 2.67vw;
+	height: 4.67vw;
+	position: absolute;
+	top: 50%;
+	left: 2.93vw;
+	transform: translateY(-50%);
+}
+.header .title{
+		font-size: 3.73vw;
+		color: #555555;
+}
+
+.header {
+	position: relative;
+	text-align: center;
+	padding: 2.4vw 2.93vw;
+}
+
+.shipping_address {
+	background-color: #f4f8f7;
+	height: 100vh;
+}
+
+.shipping_address li {
+	width: 100vw;
+	height: 25.87vw;
+	background-color: #ffffff;
+}
+.name_phone_box {
+	padding: 3.73vw 6.33vw 5.2vw 3.33vw;
+	display: flex;
+	justify-content: space-between;
+	width: 62vw;
+}
+.name_phone_box .name,
+.name_phone_box .phone {
+	font-size: 3.73vw;
+	color: #333333;
+}
+
+.name_phone_box .cross {
+	font-size: 2.67vw;
+	color: #c55a5c;
+	padding: 0.67vw;
+	border: 0.13vw solid #c55a5c;
+	border-radius: 0.67vw;
+}
+.shipping_address .site{
+	width: 59.2vw;
+	font-size: 3.2vw;
+	color:#666666;
+	line-height: 6.4vw;
+	padding:0 0 3.87vw 2.8vw ;
+}
+.shipping_address .icon .icon_pen,
+.shipping_address .icon .icon_cross{
+	width: 4.4vw;
+		height: 4.8vw;
+}
+.shipping_address .icon{
+	position: absolute;
+	top: 11.07vw;
+	right: 2.67vw;
+}
+.relative{
+	position: relative;
+}
+.shipping_address .icon .icon_cross{
+	padding-left: 5.87vw;
+}
+.shipping_address .item_box{
+	background-color: #f4f8f7;
+	padding-top:2.67vw;
+}
+.button_new_folder{
+	display: inline-block;
+	text-align: center;
+	padding: 3.2vw 36vw;
+	background-color: #c55a5c;
+		border-radius: 0.53vw;
+		font-size: 3.73vw;
+			color: #ffffff;
+			position: fixed;
+			bottom: 4.13vw;
+			left: 2.8vw;
+}

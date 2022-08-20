@@ -1,0 +1,127 @@
+.header .arrow {
+	width: 2.67vw;
+	height: 4.67vw;
+	position: absolute;
+	top: 50%;
+	left: 2.93vw;
+	transform: translateY(-50%);
+}
+
+.header .title {
+	font-size: 3.73vw;
+	color: #555555;
+}
+
+.header {
+	position: relative;
+	text-align: center;
+	padding: 2.4vw 2.93vw;
+	background-color: #fbfbfb;
+}
+
+.search_body {
+	padding: 0 2.8vw 0 2.67vw;
+}
+
+.search_frame_box .search_icon {
+	padding: 2.4vw;
+	background-color: #c55a5c;
+	border-radius: 0.53vw;
+	text-align: center;
+}
+
+.search_icon img {
+	width: 4.13vw;
+	height: 4.13vw;
+}
+
+.search_body .search_frame_box {
+	display: flex;
+	justify-content: space-between;
+	padding:2.67vw 0;
+}
+
+.search_body .search_frame {
+	width: 74.14vw;
+	height: 8.93vw;
+	font-size: 3.47vw;
+	border: none;
+	border-radius: 50px;
+	background-color: #f4f8f7;
+	padding: 0 3.33vw;
+}
+
+.search_not {
+	padding: 9.87vw 32.5vw 12.93vw 32.67vw;
+	text-align: center;
+	background-color: #efefef;
+}
+
+.search_not .icon_not {
+	width: 20.53vw;
+	height: 24.8vw;
+}
+
+.search_not .not_text {
+	font-size: 3.47vw;
+	color: #000000;
+	opacity: 0.56;
+}
+
+.search_body .search_content {
+	padding: 4.53vw 4.27vw 0 3.47vw;
+}
+
+.search_body .search_content li {
+	display: flex;
+	justify-content: space-between;
+}
+
+.search_body .search_content .search_img {
+	width: 27.33vw;
+	height: 26.4vw;
+}
+
+.search_body .search_content .content_box {
+	padding: 1.2vw 0 0 3.33vw;
+	border-bottom: 0.5px solid #eeeeee;
+}
+
+.search_body .search_content .content_box .text {
+	font-size: 3.47vw;
+	color: #555555;
+}
+
+.search_body .search_content .content_box .introduce {
+	font-size: 2.67vw;
+	color: #999999;
+	margin: 3.87vw 0 3.47vw 0;
+}
+
+.search_body .search_content .content_box .price {
+	font-size: 2.4vw;
+	color: #c55a5c;
+	margin-bottom: 1vw;
+}
+
+.search_body .icon_fixed img {
+	width: 7.2vw;
+	height: 7.2vw;
+	position: fixed;
+	right: 4.27vw;
+	bottom: 11.2vw;
+}
+.guess_like{
+	padding: 3.73vw 42.4vw 3.2vw 42.4vw;
+	text-align: center;
+}
+.guess_like .guess_like_text{
+	font-size: 3.47vw;
+		color: #555555;
+}
+.guess_like .red_line{
+	display: inline-block;
+	width: 10.67vw;
+		height: 0.13vw;
+		background-color: #c55a5c;
+}

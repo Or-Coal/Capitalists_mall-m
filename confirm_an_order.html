@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>确认订单</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/confirm_an_order.css">
+</head>
+
+<body>
+    <ul class="order_item">
+    </ul>
+    <div class="option">
+        <div class="option_line">
+            <div>商品合计</div>
+            <div class="option_total">￥439.00</div>
+        </div>
+    </div>
+    <div class="option">
+        <div class="option_line">
+            <div>运费</div>
+            <div>￥0.00</div>
+        </div>
+    </div>
+    <div class="option">
+        <div class="option_line">
+            <div>优惠券：未选择</div>
+            <div>0张</div>
+        </div>
+    </div>
+    <div class="option">
+        <div class="option_line">
+            <div>备注：</div>
+            <input class="remark" type="text" placeholder="填写备注">
+        </div>
+    </div>
+    <div class="total">
+        <div class="total_price">合计：<span>￥439元</span></div>
+        <div class="button_order">下单</div>
+    </div>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/axios.config.js"></script>
+    <script src="./js/utils.js"></script>
+    <script>
+        var goods = params('goods')
+        var total = params('total')
+        var goodsArr = goods.split(',')
+        var oTotalOrder = document.querySelector('.total .total_price span')
+        var oOrderItem = document.querySelector('.order_item')
+        var oOptionTotal = document.querySelector('.option_total')
+        var oToatlOrder = document.querySelector('.total .button_order')
+        var oBody = document.querySelector('body')
+        var totalnum = total.slice(1, -1)
+
+        function choose_adress(element) {
+            element.addEventListener('click', function () {
+                location.assign('./shipping_address.html?redirect=confirm-order')
+            })
+        }
+        function ButtonOrderFun(a,b,c) {
+            oToatlOrder.addEventListener('click', function () {
+                axios.post('/order/create', { payment: a, addressId: b, goodsList: c }).then(function (res) {
+                    console.log(res)
+                    if (res.status) {
+                        location.replace('./choose_payment_method.html')
+                    } else {
+                        alert('下单失败')
+                    }
+                })
+
+            })
+        }
+        axios.post('/order/settle', { goods: goodsArr }).then(function (res) {
+            var goodsList = []
+            var i = 0
+            if (res.status) {
+                var str = ''
+                res.data.goods.forEach(function (item) {
+                    var fun = {}
+                    fun.id = item.id
+                    fun.num = item.goods_num
+                    console.log(fun)
+                    goodsList[i] = fun
+                    i++
+                    str += ` <li>
+            <div class="list_box" data-id="${item.id}">
+                <img class="list_img" src="${item.img_md}" alt="图片加载失败">
+                <div class="list">
+                    <div class="title">${item.name}</div>
+                    <div class="quantity">神秘灰 × ${item.goods_num}</div>
+                    <div class="price">${item.price}</div>
+                </div>
+            </div>
+        </li>`
+                })
+                console.log(goodsList)
+                oOrderItem.insertAdjacentHTML('afterbegin', str)
+                oTotalOrder.innerText = totalnum
+                oOptionTotal.innerText = totalnum
+                if (sessionStorage.address_id) {
+                    axios.get('/address', { params: { id: sessionStorage.address_id } }).then(function (res) {
+                        if (res.status) {
+                            console.log(res)
+                            var str = ` <header class="header relative">
+        <div>确认订单</div>
+        <img class="arrow_back" onclick="history.go(-2)" src="./img/confirm_an_order/img_03.png" alt="图片加载失败" title="返回">
+    </header>
+    <div class="address_choose relative">
+        <div>寄送至:</div>
+        <img class="arrow_address_choose" src="./img/confirm_an_order/img_05.png" alt="">
+    </div>
+    <div class="address_content" data-id="${res.data.id}">
+        <div class="harvest_address">
+            <img class="stripe relative" src="./img/confirm_an_order/img_03.jpg" alt="图片加载失败">
+            <div class="message">
+                <div>${res.data.name}</div>
+                <div>${res.data.tel}</div>
+                ${res.data.isDefault ? '<div class="default">默认</div>' : "<div></div>"}
+            </div>
+            <div class="order_address">${res.data.province_name + res.data.city_name + res.data.county_name + res.data.town_name}</div>
+        </div>
+    </div>`
+                            oBody.insertAdjacentHTML('afterbegin', str)
+                            var oArrowAddressChoose = document.querySelector('.arrow_address_choose')
+                            var oAddressContent = document.querySelector('.address_content')
+                            choose_adress(oAddressContent)
+                            choose_adress(oArrowAddressChoose)
+                            var address_total = total.slice(2, -1)
+                            console.log(address_total, oAddressContent.dataset.id, goodsList)
+                            ButtonOrderFun(address_total, oAddressContent.dataset.id, goodsList)
+                        }
+                    })
+                } else {
+                    if (res.data.address) {
+                        var str = `  <header class="header relative">
+        <div>我的订单</div>
+        <img class="arrow_back" onclick="history.back()" src="./img/confirm_an_order/img_03.png" alt="图片加载失败" title="返回">
+    </header>
+    <div class="address_choose relative">
+        <div>寄送至:</div>
+        <img class="arrow_address_choose" src="./img/confirm_an_order/img_05.png" alt="">
+    </div>
+    <div class="address_content" data-id="${res.data.address.id}">
+        <div class="harvest_address">
+            <img class="stripe relative" src="./img/confirm_an_order/img_03.jpg" alt="图片加载失败">
+            <div class="message">
+                <div>${res.data.address.name}</div>
+                <div>${res.data.address.tel}</div>
+                ${res.data.address.isDefault ? '<div class="default">默认</div>' : "<div></div>"}
+            </div>
+            <div class="order_address">${res.data.address.province_name + res.data.address.city_name + res.data.address.county_name + res.data.address.town_name}</div>
+        </div>
+    </div>`
+                        oBody.insertAdjacentHTML('afterbegin', str)
+                        var oArrowAddressChoose = document.querySelector('.arrow_address_choose')
+                        var oAddressContent = document.querySelector('.address_content')
+                        choose_adress(oAddressContent)
+                        choose_adress(oArrowAddressChoose)
+                            var address_total = total.slice(2, -1)
+                        ButtonOrderFun(address_total, oAddressContent.dataset.id, goodsList)
+                    } else {
+                        var str = `<header class="header relative">
+        <div>我的订单</div>
+        <img class="arrow_back" onclick="history.back()" src="./img/confirm_an_order/img_03.png" alt="图片加载失败" title="返回">
+    </header>
+    <div class="address_choose relative">
+        <div>寄送至:</div>
+        <img class="arrow_address_choose" src="./img/confirm_an_order/img_05.png" alt="">
+    </div><div class="unfinished_order">没有收货地址? 点我去添加</div>`
+                        oBody.insertAdjacentHTML('afterbegin', str)
+                        var oArrowAddressChoose = document.querySelector('.arrow_address_choose')
+                        var UnfinishedOrder = document.querySelector('.unfinished_order')
+                        choose_adress(UnfinishedOrder)
+                        choose_adress(oArrowAddressChoose)
+                        oToatlOrder.addEventListener('click', function () {
+                            alert('请先填写收货地址')
+                        })
+
+                    }
+                }
+
+
+            }
+            console.log(res)
+
+        })
+    </script>
+</body>
+
+</html>

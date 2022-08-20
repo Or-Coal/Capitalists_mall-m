@@ -1,0 +1,109 @@
+.register_box {
+	padding: 0 5vw;
+	text-align: center;
+}
+
+.logo {
+	text-align: center;
+	padding: 18vw 0 17.47vw 0;
+
+}
+
+.logo img {
+	width: 16vw;
+	height: 16.67vw;
+}
+
+.register_box .input_style {
+	border: 0.2vw solid #b7b7b7;
+	width: 89vw;
+	height: 11vw;
+	font-size: 3.73vw;
+	color: #777777;
+	box-sizing: border-box;
+	padding: 0 3vw;
+}
+
+.button_new_folder {
+	box-sizing: border-box;
+	display: inline-block;
+	text-align: center;
+	padding: 5vw 40.5vw;
+	background-color: #c55a5c;
+	border-radius: 0.53vw;
+	font-size: 4vw;
+	color: #ffffff;
+}
+.register_box .sex_box{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.register_box .sex_box .text {
+	font-size: 3.73vw;
+	color: #777777;
+}
+
+.register_box .sex_box span {
+	font-size: 3.73vw;
+	color: #999999;
+}
+.register_box .item{
+	margin-bottom: 4.7vw;
+}
+.register_box .sex_radio{
+	width: 4.13vw;
+		height: 4.13vw;
+		margin-right: 3.2vw;
+}
+.register_box  .sex_box .man{
+	margin-left: 5.87vw;
+}
+.register_box  .sex_box .woman{
+	margin-left: 12.4vw;
+}
+.register_box .cell_phone{
+	font-size: 3.73vw;
+		color: #777777;
+		line-height: 3.73vw;
+}
+.register_box .cell_phone img{
+		width: 1.73vw;
+		height: 1.47vw;
+}
+.register_box .cell_phone .content{
+	display: flex;
+	align-items: center;
+	position: absolute;
+	left: 2.93vw;
+	top: 3.73vw;
+	z-index: 2;
+}
+.relative{
+	position: relative;
+}
+.register_box .cell_phone .phone{
+	padding-left:18vw ;
+}
+.register_box .verification{
+	width: 60.93vw;
+	height: 10.67vw;
+}
+.register_box .type_captcha{
+	display: flex;
+	justify-content: space-between;
+}
+.register_box .type_captcha .gain{
+		width: 25.6vw;
+		height: 10.67vw;
+		border: solid 0.13vw #b7b7b7;
+		line-height:10.67vw ;
+		text-align: center;
+		font-size: 3.73vw;
+			color: #777777;
+}
+.register_box .agreement{
+	margin-top: 15.73vw;
+		font-size: 2.67vw;
+		color: #999999;
+}	

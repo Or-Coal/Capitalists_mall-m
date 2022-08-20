@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>购物车</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/shopping_trolley.css">
+</head>
+
+<body>
+	<header class="header">购物车</header>
+	<div class="shopping_trolley_list">
+		<ul class="shopping">
+		</ul>
+	</div>
+	<div class="bottom_fixed">
+		<div class="fixed_top">
+			<div class="left">
+				<input class="check_all" type="checkbox" id="check_all">
+				<span class="text">全选</span>
+			</div>
+			<div class="right">
+				<span class="price">￥0.00</span>
+				<span class="place_an_order">结算</span>
+			</div>
+		</div>
+		<div class="fixed_bottom">
+			<a href="index.html">
+				<div class="item"><img src="./img/shopping_trolley/1.png" alt="">
+					<div class="text">首页</div>
+				</div>
+			</a>
+			<a href="optimization.html">
+				<div class="item"><img src="./img/shopping_trolley/2.png" alt="">
+					<div class="text">优选</div>
+				</div>
+			</a>
+			<a href="classify.html">
+				<div class="item"><img src="./img/shopping_trolley/3.png" alt="">
+					<div class="text">分类</div>
+				</div>
+			</a>
+			<a href="shopping_trolley.html">
+				<div class="item"><img src="./img/shopping_trolley/4.png" alt="">
+					<div class="text">购物车</div>
+				</div>
+			</a>
+			<a href="personal_center.html">
+				<div class="item"><img src="./img/shopping_trolley/5.png" alt="">
+					<div class="text">我的</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="assume_like">
+		猜你喜欢
+	</div>
+	<ul class="assume_like_box">
+		<li><img class="assume_like_img" src="./img/shopping_trolley/img_03.jpg" alt="">
+			<div class="name">璀璨灵动 项链</div>
+			<div class="price">￥149</div>
+		</li>
+		<li><img class="assume_like_img" src="./img/shopping_trolley/img_06.jpg" alt="">
+			<div class="name">JD玉髓锆石镶嵌银项链</div>
+			<div class="price">￥199</div>
+		</li>
+		<li><img class="assume_like_img" src="./img/shopping_trolley/img_03.jpg" alt="">
+			<div class="name">璀璨灵动 项链</div>
+			<div class="price">￥149</div>
+		</li>
+		<li><img class="assume_like_img" src="./img/shopping_trolley/img_06.jpg" alt="">
+			<div class="name">JD玉髓锆石镶嵌银项链</div>
+			<div class="price">￥199</div>
+		</li>
+		<li><img class="assume_like_img" src="./img/shopping_trolley/img_03.jpg" alt="">
+			<div class="name">璀璨灵动 项链</div>
+			<div class="price">￥149</div>
+		</li>
+		<li><img class="assume_like_img" src="./img/shopping_trolley/img_06.jpg" alt="">
+			<div class="name">JD玉髓锆石镶嵌银项链</div>
+			<div class="price">￥199</div>
+		</li>
+		<li><img class="assume_like_img" src="./img/shopping_trolley/img_03.jpg" alt="">
+			<div class="name">璀璨灵动 项链</div>
+			<div class="price">￥149</div>
+		</li>
+		<li><img class="assume_like_img" src="./img/shopping_trolley/img_06.jpg" alt="">
+			<div class="name">JD玉髓锆石镶嵌银项链</div>
+			<div class="price">￥199</div>
+		</li>
+	</ul>
+	<div class="hidden"></div>
+	<div class="top_arrows"><img src="./img/shopping_trolley/top_arrows.png" alt=""></div>
+	<script src="./js/axios.min.js"></script>
+	<script src="./js/axios.config.js"></script>
+
+	<script>
+		axios.get('/cart/list').then(function (res) {
+			console.log(res)
+			var str = ''
+			if (res.status) {
+				res.data.forEach(function (item) {
+					str += `<li class="relative" data-id="${item.id}" data-goods_id="${item.goods_id}">
+				<div>
+					<input class="select" type="checkbox">
+				</div>
+				<div class="item">
+					<img class="commodity_img" src="${item.img}" alt="">
+					<div class="text">
+						<div class="title">${item.name}</div>
+						<div class="parameter">1.8M;米白色</div>
+						<div class="text-bottom">
+							<div class="price">￥<span>${item.price}</span></div>
+							<div class="quantity">
+								<div class="subtract box_style">-</div>
+								<div class="value box_style">${item.goods_num}</div>
+								<div class="plus box_style">+</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="remove"><img src="./img/shopping_trolley/remove_03.png" alt=""></div>
+			</li>`
+				})
+				var oShoppingTrolleyList = document.querySelector('.shopping_trolley_list .shopping')
+				oShoppingTrolleyList.insertAdjacentHTML('afterbegin', str)
+				var oChoiceBox = document.querySelectorAll(".select")
+				var oPlace_an_order = document.querySelector(".place_an_order")
+				var haveCheck = false
+				var isAllCheck = false
+				function JudgeSelection() {
+					oChoiceBox = document.querySelectorAll(".select")
+					isAllCheck = true
+					haveCheck = false
+					oChoiceBox.forEach(function (item) {
+						isAllCheck = isAllCheck && item.checked
+						haveCheck = haveCheck || item.checked
+					})
+					if (isAllCheck) {
+						oCheckAll.checked = true
+					} else {
+						oCheckAll.checked = false
+					}
+					if (haveCheck) {
+						oPlace_an_order.style.backgroundColor = "#c55a5c"
+					} else {
+						oPlace_an_order.style.backgroundColor = "#e5e5e5"
+
+					}
+					sumPrice()
+				}
+				var oCheckAll = document.querySelector('#check_all')
+				oChoiceBox.forEach(function (item) {
+					item.addEventListener('click', JudgeSelection)
+				})
+
+				oCheckAll.addEventListener('click', function () {
+					if (oCheckAll.checked) {
+						oChoiceBox = document.querySelectorAll(".select")
+						oChoiceBox.forEach(function (item) {
+							item.checked = "checked"
+						})
+					} else {
+						oChoiceBox = document.querySelectorAll(".select")
+						oChoiceBox.forEach(function (item) {
+							item.checked = false
+						})
+					}
+					oChoiceBox = document.querySelectorAll(".select")
+					haveCheck = false
+					oChoiceBox.forEach(function (item) {
+						haveCheck = haveCheck || item.checked
+					})
+					if (haveCheck) {
+						oPlace_an_order.style.backgroundColor = "#c55a5c"
+					} else {
+						oPlace_an_order.style.backgroundColor = "#e5e5e5"
+
+					}
+					sumPrice()
+				})
+				var oSubtract = document.querySelectorAll(".quantity .subtract")
+				var oPlus = document.querySelectorAll(".quantity .plus")
+				oSubtract.forEach(function (item) {
+					item.addEventListener('click', function () {
+						var num = item.parentElement.querySelector(".value").innerText
+						if (num > 1) {
+							var id = item.parentElement.parentElement.parentElement.parentElement.parentElement.dataset.id
+							console.dir(id)
+							axios.post('/cart/decrease', { id }).then(function (res) {
+								console.log(res)
+								if (res.status) {
+									item.parentElement.querySelector(".value").innerText = num - 1
+								}
+							})
+						}
+						sumPrice()
+					})
+				})
+				oPlus.forEach(function (item) {
+					item.addEventListener('click', function () {
+						var num = parseInt(this.parentElement.querySelector(".value").innerText)
+						var id = item.parentElement.parentElement.parentElement.parentElement.parentElement.dataset.id
+						axios.post('/cart/increase', { id })
+						this.parentElement.querySelector(".value").innerText = num + 1
+						sumPrice()
+					})
+				})
+				var oTotal = document.querySelector(".bottom_fixed .price")
+				function sumPrice() {
+					var total = 0.00
+					var oCheck = document.querySelectorAll(".select:checked")
+					oCheck.forEach(function (item) {
+						var num = parseFloat(item.parentElement.parentElement.querySelector(".value").innerText)
+						var price = item.parentElement.parentElement.querySelector(".price span").innerText
+						console.log(num)
+						console.log(price)
+						total += num * price
+					})
+					total = total.toFixed(2);
+					oTotal.innerText = "￥" + total
+				}
+				var oRemovelist = document.querySelectorAll(".remove")
+				oRemovelist.forEach(function (item) {
+					item.addEventListener('click', function () {
+						var id = item.parentElement.dataset.id
+						console.log(id)
+						axios.post('/cart/remove', { id }).then(function (res) {
+							console.log(res)
+							if (res.status) {
+								item.parentElement.remove()
+							}
+						})
+						sumPrice()
+					})
+				})
+				var oCloseAnAccount = document.querySelector('.bottom_fixed .place_an_order')
+				var idArr = []
+				oCloseAnAccount.addEventListener('click', function () {
+					idArr = []
+					var i = 0
+					if (haveCheck) {
+						var oCheckboxALL = document.querySelectorAll('li input[type="checkbox"]')
+						oCheckboxALL.forEach(function (item) {
+							if (item.checked) {
+								var id = item.closest('li').dataset.goods_id
+								idArr[i] = id
+								i++
+							}
+						})
+						location.assign(`./confirm_an_order.html?goods=${idArr}&total="${oTotal.innerText}"`)
+
+					}
+				})
+			}
+		})
+
+	</script>
+	<!-- <script>
+		var oChoiceBox = document.querySelectorAll(".select")
+		var oPlace_an_order = document.querySelector(".place_an_order")
+		var haveCheck = false
+		var isAllCheck = false
+		function JudgeSelection() {
+			oChoiceBox = document.querySelectorAll(".select")
+			isAllCheck = true
+			haveCheck = false
+			oChoiceBox.forEach(function (item) {
+				isAllCheck = isAllCheck && item.checked
+				haveCheck = haveCheck || item.checked
+			})
+			if (isAllCheck) {
+				oCheckAll.checked = true
+			} else {
+				oCheckAll.checked = false
+			}
+			if (haveCheck) {
+				oPlace_an_order.style.backgroundColor = "#c55a5c"
+			} else {
+				oPlace_an_order.style.backgroundColor = "#e5e5e5"
+
+			}
+			sumPrice()
+		}
+		var oCheckAll = document.querySelector('#check_all')
+		oChoiceBox.forEach(function (item) {
+			item.addEventListener('click', JudgeSelection)
+		})
+
+		oCheckAll.addEventListener('click', function () {
+			if (oCheckAll.checked) {
+				oChoiceBox = document.querySelectorAll(".select")
+				oChoiceBox.forEach(function (item) {
+					item.checked = "checked"
+				})
+			} else {
+				oChoiceBox = document.querySelectorAll(".select")
+				oChoiceBox.forEach(function (item) {
+					item.checked = false
+				})
+			}
+			oChoiceBox = document.querySelectorAll(".select")
+			haveCheck = false
+			oChoiceBox.forEach(function (item) {
+				haveCheck = haveCheck || item.checked
+			})
+			if (haveCheck) {
+				oPlace_an_order.style.backgroundColor = "#c55a5c"
+			} else {
+				oPlace_an_order.style.backgroundColor = "#e5e5e5"
+
+			}
+			sumPrice()
+		})
+		var oSubtract = document.querySelectorAll(".quantity .subtract")
+		var oPlus = document.querySelectorAll(".quantity .plus")
+		oSubtract.forEach(function (item) {
+			item.addEventListener('click', function () {
+				var num = this.parentElement.querySelector(".value").innerText
+				if (num > 1) this.parentElement.querySelector(".value").innerText = num - 1
+				sumPrice()
+			})
+		})
+		oPlus.forEach(function (item) {
+			item.addEventListener('click', function () {
+				var num = parseInt(this.parentElement.querySelector(".value").innerText)
+				this.parentElement.querySelector(".value").innerText = num + 1
+				sumPrice()
+			})
+		})
+		var oTotal = document.querySelector(".bottom_fixed .price")
+		function sumPrice() {
+			var total = 0.00
+			var oCheck = document.querySelectorAll(".select:checked")
+			oCheck.forEach(function (item) {
+				var num = parseFloat(item.parentElement.parentElement.querySelector(".value").innerText)
+				var price = item.parentElement.parentElement.querySelector(".price span").innerText
+				total += num * price
+			})
+			oTotal.innerText = "￥" + total
+		}
+		var oRemovelist = document.querySelectorAll(".remove")
+		oRemovelist.forEach(function (item) {
+			item.addEventListener('click', function () {
+				this.parentElement.remove()
+				sumPrice()
+			})
+		})
+	</script> -->
+</body>
+
+</html>

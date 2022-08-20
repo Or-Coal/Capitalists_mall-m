@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>选择付款方式</title>
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/choose_payment_method.css">
+	</head>
+	<body>
+		<header class="header">
+			<img class="arrow" src="./img/my_favorite/img-1_10.png" alt="">
+			<span class="title">选择付款方式</span>
+		</header>
+		<div class="background">
+			<ul>
+				<li>
+					<input class="checkbox_pay checkbox_pay_style" type="checkbox">
+					<img class="icon_pay icon_pay_style" src="./img/choose_payment_method/img_03.png" alt="">
+					<span class="text_pay">支付宝支付</span>
+				</li>
+				<li>
+					<input class="checkbox_pay" type="checkbox">
+					<img class="icon_pay" src="./img/choose_payment_method/img_09.png" alt="">
+					<span class="text_pay">微信支付</span>
+				</li>
+				<li>
+					<input class="checkbox_pay" type="checkbox">
+					<img class="icon_pay" src="./img/choose_payment_method/img_06.png" alt="">
+					<span class="text_pay">银联支付</span>
+				</li>
+			</ul>
+			<div class="Payment">付款</div>
+		</div>
+		<script>
+			var oPayment = document.querySelector('.Payment')
+			oPayment.addEventListener('click',function(){
+				alert('付款成功')
+				location.assign('./personal_center.html')
+			})
+		</script>
+	</body>
+</html>

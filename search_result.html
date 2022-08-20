@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>搜索结果</title>
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/search_result.css">
+	</head>
+	<body>
+		<header class="header">
+			<img class="arrow" onclick="history.back()" src="./img/my_favorite/img-1_10.png" alt="">
+			<span class="title">搜索结果</span>
+		</header>
+		<div class="search_body">
+			<div class="search_frame_box">
+				<input class="search_frame" placeholder="马卡龙色 多功能早餐机" type="text">
+				<div class="search_icon"><img src="./img/search/search_03.png" alt=""></div>
+			</div>
+			<div class="serve">
+				<div class="item">综合</div>
+				<div class="item">销售</div>
+				<div class="item">新品</div>
+				<div class="item"><span>价格</span>
+					<span class="icon_img">
+						<div><img class="icon_top" src="./img/search/img_03.png" alt="">
+						</div>
+						<div><img class="icon_bottom" src="./img/search/img_07.png" alt="">
+						</div>
+					</span>
+				</div>
+			</div>
+			<div class="search_content">
+				<ul>
+				</ul>
+			</div>
+			<div class="icon_fixed"><img src="./img/search/img_11.png" alt=""></div>
+		</div>
+		<script src="./js/axios.min.js"></script>
+		<script src="./js/axios.config.js"></script>
+		<script src="./js/utils.js"></script>
+		<script>
+			var search = params('search')
+			var oSearchContent = document.querySelector(".search_content ul")
+			var oSearchInput = document.querySelector(".search_frame_box .search_frame")
+			var oSearch = document.querySelector(".search_frame_box .search_icon")
+			console.log(search)
+			function serachFun(value){
+				axios.get('/goods/list',{params:{keyword:value}}).then(function(res){
+			console.log(res)
+				if(res.status){
+					if(res.data.length === 0) 
+					location.assign('./not_search_result.html')
+					var str = ''
+					res.data.forEach(function(item){
+						str+=`<li><a href="./commodity_particulars.html?id=${item.id}">
+						<div class="img_box"><img class="search_img" src="${item.img_md}" alt=""></div>
+						<div class="content_box">
+							<div class="text">${item.name}</div>
+							<div class="introduce">${item.hotPoint}</div>
+							<div class="price">${item.price}</div>
+						</div></a>
+					</li>`
+					})
+					oSearchContent.innerHTML = str
+				}
+			})
+			}
+			serachFun(search)
+			oSearch.addEventListener('click',function(){
+				serachFun(oSearchInput.value)
+			})
+		</script>
+	</body>
+</html>

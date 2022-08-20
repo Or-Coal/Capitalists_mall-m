@@ -1,0 +1,129 @@
+.header .arrow {
+	width: 2.67vw;
+	height: 4.67vw;
+	position: absolute;
+	top: 50%;
+	left: 2.93vw;
+	transform: translateY(-50%);
+}
+
+.header .title {
+	font-size: 3.73vw;
+	color: #555555;
+}
+
+.header {
+	position: relative;
+	text-align: center;
+	padding: 2.4vw 2.93vw;
+	background-color: #fbfbfb;
+}
+
+.search_body {
+	padding: 0 2.8vw 0 2.67vw;
+}
+
+.search_frame_box .search_icon {
+	padding: 2.4vw;
+	background-color: #c55a5c;
+	border-radius: 0.53vw;
+	text-align: center;
+}
+
+.search_icon img {
+	width: 4.13vw;
+	height: 4.13vw;
+}
+
+.search_body .search_frame_box {
+	display: flex;
+	justify-content: space-between;
+	padding: 2.67vw 0;
+}
+
+.search_body .search_frame {
+	width: 74.14vw;
+	height: 8.93vw;
+	font-size: 3.47vw;
+	border: none;
+	border-radius: 50px;
+	background-color: #f4f8f7;
+	padding: 0 3.33vw;
+
+}
+
+.search_body .serve {
+	padding: 5.6vw 6.93vw 2.8vw 5.87vw;
+	display: flex;
+	justify-content: space-between;
+}
+
+.search_body .serve .item {
+	font-size: 3.47vw;
+	color: #000000;
+	opacity: 0.7;
+}
+
+.search_body .serve .item:nth-child(4) {
+	display: flex;
+	justify-content: space-between;
+}
+
+.search_body .serve .item:nth-child(4) .icon_img {
+	height: 3.33vw;
+	margin-top: -3.5vw;
+}
+
+.search_body .serve .item:nth-child(4) img {
+	width: 1.87vw;
+	height: 1.47vw;
+}
+
+.search_body .serve .item:nth-child(4) .icon_top {
+	margin-bottom: -2vw;
+}
+
+.search_body .search_content {
+	padding: 4.53vw 4.27vw 0 3.47vw;
+	border-top: 1px solid #eeeeee;
+}
+
+.search_body .search_content li a{
+	display: flex;
+	justify-content: space-between;
+}
+
+.search_body .search_content .search_img {
+	width: 27.33vw;
+	height: 26.4vw;
+}
+
+.search_body .search_content .content_box {
+	padding: 1.2vw 0 0 3.33vw;
+	border-bottom: 0.5px solid #eeeeee;
+}
+
+.search_body .search_content .content_box .text {
+	font-size: 3.47vw;
+	color: #555555;
+}
+
+.search_body .search_content .content_box .introduce {
+	font-size: 2.67vw;
+	color: #999999;
+	margin: 3.87vw 0 3.47vw 0;
+}
+
+.search_body .search_content .content_box .price {
+	font-size: 2.4vw;
+	color: #c55a5c;
+	margin-bottom: 1vw;
+}
+
+.search_body .icon_fixed img {
+	width: 7.2vw;
+	height: 7.2vw;
+	position: fixed;
+	right: 4.27vw;
+	bottom: 11.2vw;
+}

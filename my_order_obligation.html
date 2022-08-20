@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的订单</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/my_order_obligation.css">
+</head>
+
+<body>
+    <div class="header relative">
+        <a href="./personal_center.html"><img  class="arrows_left absolute" src="./img/my_order/receiver_06.png" alt="图片加载失败"></a>
+        <span class="title">我的订单</span>
+    </div>
+    <div class="nav">
+        <ul class="item">
+            <li><a href="./my_order_obligation.html?id=0">待付款</a></li>
+            <li><a href="./my_order_obligation.html?id=3">待发货</a></li>
+            <li><a href="./my_order_obligation.html?id=4">待收获</a></li>
+            <li><a href="./my_order_obligation.html?id=5">待评价</a></li>
+            <li><a href="./my_order_obligation.html?id=all">全部</a></li>
+        </ul>
+    </div>
+    <div class="content_body">
+    </div>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/axios.config.js"></script>
+    <script src="./js/utils.js"></script>
+    <script>
+        var id = params('id')
+        var oNavItem = document.querySelector('.nav .item')
+        console.log(id)
+        function ThePageDataFun(res){
+            var htmlstr = ''
+            res.data.forEach(function(item){
+                    var str = `<div class="commodity_list"><div class="header_title">
+                <div class="text">${item.status}</div>
+                <div class="time">${item.create_time}</div>
+            </div>`
+                        var strinner = ''
+                    item.goodsList.forEach(function(itemList){
+                        strinner+=` 
+            <div class="order_form_list">
+                <div class="commodity_parameters">
+                    <img class="commodity" src="${itemList.img_md}" href alt="">
+                    <div class="title">
+                        <div class="title_subject">${itemList.name}...</div>
+                        <div class="commodity_parameters_content">
+                            <div class="capacity">容量30L</div>
+                            <div class="price">￥${itemList.goods_price}</div>
+                        </div>
+                        <div class="quantity_box">
+                            <div class="quantity">X ${itemList.goods_num}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `
+                        console.log(itemList.name)
+                    })
+                    str += strinner+`<div class="total">
+                <div class="total_num">共 <span>${item.goodsList.length}</span> 件商品</div>
+                <div class="total_price">合计：<span>￥${item.payment}</span></div>
+            </div>
+            <div class="operation_list">
+                <div class="cancellation_order">取消订单</div>
+                <div class="at_once_payment">立即付款</div>
+            </div></div>`
+                    htmlstr+=str 
+                })
+                var oContentbody = document.querySelector('.content_body')
+                oContentbody.innerHTML = htmlstr
+        }
+        if(id==0){
+            console.log(oNavItem.querySelector(":nth-child(1)"))
+            oNavItem.querySelector(":nth-child(1)").style.borderBottom = "0.7vw solid #c55a5c"
+            axios.get('/order/list',{params:{status:id}}).then(function(res){
+            if(res.status){
+                console.log(res)
+                ThePageDataFun(res)
+            }
+        })
+        }
+        if(id==3){
+            console.log(oNavItem.querySelector(":nth-child(2)"))
+            oNavItem.querySelector(":nth-child(2)").style.borderBottom = "0.7vw solid #c55a5c"
+            axios.get('/order/list',{params:{status:id}}).then(function(res){
+            if(res.status){
+                console.log(res)
+                ThePageDataFun(res)
+            }
+        })
+        }
+        if(id==4){
+            console.log(oNavItem.querySelector(":nth-child(3)"))
+            oNavItem.querySelector(":nth-child(3)").style.borderBottom = "0.7vw solid #c55a5c"
+            axios.get('/order/list',{params:{status:id}}).then(function(res){
+            if(res.status){
+                console.log(res)
+                ThePageDataFun(res)
+            }
+        })
+        }
+        if(id==5){
+            console.log(oNavItem.querySelector(":nth-child(4)"))
+            oNavItem.querySelector(":nth-child(4)").style.borderBottom = "0.7vw solid #c55a5c"
+            axios.get('/order/list',{params:{status:id}}).then(function(res){
+            if(res.status){
+                console.log(res)
+                ThePageDataFun(res)
+            }
+        })
+        }
+        if(id=="all"){
+            console.log(oNavItem.querySelector(":nth-child(5)"))
+            oNavItem.querySelector(":nth-child(5)").style.borderBottom = "0.7vw solid #c55a5c"
+            axios.get('/order/list',{params:{status:id}}).then(function(res){
+            if(res.status){
+                console.log(res)
+                ThePageDataFun(res)
+            }
+        })
+        }
+        
+    </script>
+</body>
+
+</html>

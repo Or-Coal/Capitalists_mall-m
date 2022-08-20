@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>个人中心</title>
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/personal_center.css">
+	</head>
+	<body>
+		<div class="background_banner relative">
+			
+		</div>
+		<div class="facecolor">
+			<div class="my_order back_gauge">
+				<div class="head_box">
+					<div class="my_order_text">我的订单</div>
+					<div>
+						<span>全部订单</span>
+						<img class="arrow_right" src="./img/install/arrow_right_03.png" alt="">
+					</div>
+				</div>
+				<ul class="my_order_body_box">
+					<li><a href="./my_order_obligation.html?id=0"><img class="my_order_icon" src="./img/personal_center/icon-1.jpg" alt="">
+						<div class="my_order_text">待付款</div></a>
+					</li>
+					<li>
+					<li><a href="./my_order_obligation.html?id=3"><img class="my_order_icon" src="./img/personal_center/icon-2.jpg" alt="">
+						<div class="my_order_text">待发货</div></a>
+					</li>
+					<li>
+					<li><a href="./my_order_obligation.html?id=4"><img class="my_order_icon" src="./img/personal_center/icon-3.jpg" alt="">
+						<div class="my_order_text">待收货</div></a>
+					</li>
+					<li>
+					<li><a href="./my_order_obligation.html?id=5"><img class="my_order_icon" src="./img/personal_center/icon-4.jpg" alt="">
+						<div class="my_order_text">待评价</div></a>
+					</li>
+					<li>
+					<li><a href="#"><img class="my_order_icon" src="./img/personal_center/icon-5.jpg" alt="">
+						<div class="my_order_text">售后</div></a>
+					</li>
+				</ul>
+			</div>
+			<div class="my_assets back_gauge">
+				<div class="my_assets_text">我的资产</div>
+				<ul class="my_assets_body">
+					<li><img class="my_assets_icon" src="./img/personal_center/icon-6.jpg" alt="">
+						<div>优惠卷</div>
+					</li>
+					<li><img class="my_assets_icon" src="./img/personal_center/icon-7.jpg" alt="">
+						<div>钱包</div>
+					</li>
+					<li><img class="my_assets_icon" src="./img/personal_center/icon-8.jpg" alt="">
+						<div>D币</div>
+					</li>
+					<li><img class="my_assets_icon" src="./img/personal_center/icon-9.jpg" alt="">
+						<div>红包</div>
+					</li>
+				</ul>
+			</div>
+			<div class="instrument back_gauge">
+				<div class="instrument_text">工具</div>
+				<ul class="instrument_box">
+					<a><li class="instrument_li_style"><img class="instrument_icon" src="./img/personal_center/icon-10.jpg"
+							alt="">
+						<div>会员中心</div>
+					</li></a>
+					<a href="./shipping_address.html"><li class="instrument_li_style"><img class="instrument_icon" src="./img/personal_center/icon-11.jpg"
+						alt="">
+					<div>收货地址</div>
+				</li></a>
+					<a><li class="instrument_li_style"><img class="instrument_icon" src="./img/personal_center/icon-12.jpg"
+							alt="">
+						<div>售后&客服</div>
+					</li></a>
+					<a><li class="instrument_li_style"><img class="instrument_icon" src="./img/personal_center/icon-13.jpg"
+							alt="">
+						<div>设置</div>
+					</li></a>
+					<a><li><img class="instrument_icon" src="./img/personal_center/icon-14.jpg" alt="">
+						<div>入住合作</div>
+					</li></a>
+					<a><li><img class="instrument_icon" src="./img/personal_center/icon-15.jpg" alt="">
+						<div>反馈&投诉</div>
+					</li></a>
+					<a><li><img class="instrument_icon" src="./img/personal_center/icon-16.jpg" alt="">
+						<div>商品报告</div>
+					</li></a>
+					<a><li><img class="instrument_icon" src="./img/personal_center/icon-17.jpg" alt="">
+						<div>关于我们</div>
+					</li></a>
+				</ul>
+			</div>
+			<div class="placeholder"></div>
+		</div>
+		<div class="bottom_fixed">
+			<div class="fixed_bottom">
+				<a href="./index.html"><div class="item"><img src="./img/personal_center/1.png" alt=""><div>首页</div></div></a>
+				<a href="./optimization.html"><div class="item"><img src="./img/personal_center/2.png" alt=""><div>优选</div></div></a>
+				<a href="./classify.html"><div class="item"><img src="./img/personal_center/3.png" alt=""><div>分类</div></div></a>
+				<a href="./shopping_trolley.html"><div class="item"><img src="./img/personal_center/4.png" alt=""><div>购物车</div></div></a>
+				<a href="./personal_center.html"><div class="item"><img src="./img/personal_center/5.png" alt=""><div>我的</div></div></a>
+			</div>
+		</div>
+		<script src="./js/axios.min.js"></script>
+		<script src="./js/axios.config.js"></script>
+		<script>
+			axios.get("/user/info").then(function(res){
+				if(res.status){
+					console.log(res)
+					var str = `<a href="./account_information.html"><img class="icon_head_portrait" src="${res.data.avatar}" alt=""></a>
+			<div class="head_white_box absolute">
+				<span>
+					<div class="text_style">15</div>
+					<div class="text_style">我的收藏</div>
+				</span>
+				<span class="name">${res.data.nickname}</span>
+				<span>
+					<div class="text_style">31</div>
+					<div class="text_style">关注品牌</div>
+				</span>
+			</div>`
+					document.querySelector(".background_banner.relative").insertAdjacentHTML("afterbegin", str)
+				}
+			})
+		</script>
+	</body>
+</html>

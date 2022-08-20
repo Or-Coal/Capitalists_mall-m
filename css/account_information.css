@@ -1,0 +1,92 @@
+.header .arrow {
+	width: 2.67vw;
+	height: 4.67vw;
+	position: absolute;
+	top: 50%;
+	left: 2.93vw;
+	transform: translateY(-50%);
+}
+
+.header .title {
+	font-size: 3.73vw;
+	color: #555555;
+}
+
+.header {
+	position: relative;
+	text-align: center;
+	padding: 2.4vw 2.93vw;
+	background-color: #fbfbfb;
+}
+.background{
+	background-color: #f4f4f4;
+	padding-top: 2.67vw;
+}
+.background ul{
+	width: 100vw;
+	background-color: #fff;
+}
+.background li{
+	padding: 4.53vw 2.93vw 4.8vw 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #cecece;
+	background-color: #fff;
+	margin: 0 2.93vw;
+}
+.background li .arrow_right{
+	width: 2.13vw;
+		height: 3.73vw;
+}
+.background .text_pay{
+font-size: 3.73vw;
+	color: #999999;
+}
+.background .content{
+font-size: 3.73vw;
+	color: #333333;
+}
+.Payment{
+	padding: 4.53vw 38.67vw;
+		background-color: #c55a5c;
+		border-radius: 1.33vw;
+		font-size: 4.27vw;
+			color: #ffffff;
+			position: absolute;
+			bottom: 22.67vw;
+			left: 2.85vw;
+}
+.background .head_portrait{
+	background-color: #ffffff;
+	padding: 7.33vw 34.53vw;
+}
+.background .head_portrait img{
+		width: 29.33vw;
+		height: 29.33vw;
+}
+.background .radio_sex_box{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 33.47vw;
+}
+.background .radio_sex_box div{
+	display: flex;
+		justify-content: space-between;
+		align-items: center;
+		/* width: 50%; */
+	
+}
+.background .radio_sex_box .select_sex{
+	display: inline-block;
+	margin-right: 3.2vw;
+}
+.background .radio_sex_box .text_sex{
+	font-size: 3.73vw;
+		color: #999999;
+}
+.background .radio_sex_box .text_sex:nth-child(1){
+	display: inline-block;
+	margin: 0 11.47vw 0 3.2vw;
+}

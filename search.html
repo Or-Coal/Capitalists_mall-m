@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>搜索</title>
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/search.css">
+	</head>
+	<body>
+		<header class="header">
+			<img class="arrow" onclick="history.back()" src="./img/my_favorite/img-1_10.png" alt="">
+			<span class="title">搜索</span>
+		</header>
+		<div class="search_body">
+			<div class="search_frame_box">
+				<input class="search_frame" placeholder="马卡龙色 多功能早餐机" type="text">
+				<div class="search_icon"><img src="./img/search/search_03.png" alt=""></div>
+			</div>
+			
+			<div class="hot_text">热门搜索</div>
+			<ul class="hot_list">
+				<li>羽绒服</li>
+				<li>四件套</li>
+				<li>手套</li>
+				<li>阔腿裤</li>
+				<li>餐具</li>
+				<li>取暖电器</li>
+				<li>卫衣</li>
+				<li>围巾</li>
+				<li>板鞋</li>
+				<li>旅行必备</li>
+				<li>手机壳</li>
+				<li>单肩包</li>
+				<li>糕点</li>
+			</ul>
+		</div>
+		<script>
+			var oSearch = document.querySelector('.search_icon img')
+			var oSearchInput = document.querySelector('.search_frame_box .search_frame')
+			oSearch.addEventListener('click',function(){
+				location.assign(`./search_result.html?search=${oSearchInput.value}`)
+			})
+		</script>
+	</body>
+</html>

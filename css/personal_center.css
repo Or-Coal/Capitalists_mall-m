@@ -1,0 +1,145 @@
+.background_banner {
+  background: url(../img/personal_center/banner2_01.jpg) no-repeat center;
+  background-size: cover;
+  height: 62.13vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.background_banner a {
+  display: inline-block;
+  z-index: 2;
+}
+.background_banner a .icon_head_portrait {
+  width: 17.07vw;
+  height: 17.07vw;
+  margin-top: -4.4vw;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.background_banner .head_white_box {
+  background-color: #fff;
+  padding: 18.4vw 15.6vw 4.53vw 15.33vw;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  bottom: 2.93vw;
+  width: 61.07vw;
+}
+.background_banner .head_white_box .name {
+  margin-top: -4.8vw;
+  font-size: 4.53vw;
+  color: #333333;
+}
+.background_banner .head_white_box .text_style {
+  font-size: 3.73vw;
+  color: #333333;
+}
+.facecolor {
+  background-color: #f0f0f0;
+}
+.facecolor .my_order {
+  background-color: #ffffff;
+}
+.facecolor .my_order .head_box {
+  display: flex;
+  justify-content: space-between;
+  padding: 4.4vw 3.47vw 4.4vw 3.6vw;
+  border-bottom: 0.13vw solid #eaeaea;
+  font-size: 3.73vw;
+  color: #333333;
+}
+.facecolor .my_order .head_box .arrow_right {
+  width: 2vw;
+  height: 3.87vw;
+  transform: translateY(0.5vw);
+}
+.my_order_body_box li {
+  text-align: center;
+}
+.my_order .my_order_body_box .my_order_icon {
+  width: 8vw;
+  height: 8vw;
+}
+.my_order .my_order_body_box li .my_order_text {
+  font-size: 3.2vw;
+  color: #555555;
+}
+.my_order .my_order_body_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4.4vw 5.07vw 6.53vw;
+}
+.instrument .instrument_text,
+.my_assets .my_assets_text {
+  display: flex;
+  justify-content: space-between;
+  padding: 4.4vw 3.47vw 4.4vw 3.6vw;
+  background-color: #fff;
+  border-bottom: 0.13vw solid #eaeaea;
+  font-size: 3.73vw;
+  color: #333333;
+}
+.my_assets .my_assets_icon {
+  width: 9vw;
+  height: 9vw;
+}
+.my_assets .my_assets_body {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 3.47vw 7vw 6vw;
+  font-size: 3.2vw;
+  color: #555555;
+}
+.instrument .instrument_box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-align: center;
+  background-color: #fff;
+  padding: 8vw 0 7.87vw 0;
+  font-size: 3.2vw;
+  color: #666666;
+}
+.instrument .instrument_box a {
+  width: 25%;
+}
+.instrument .instrument_box .instrument_icon {
+  width: 9.5vw;
+  height: 9vw;
+}
+.instrument .instrument_box .instrument_li_style {
+  margin-bottom: 10.67vw;
+}
+.bottom_fixed {
+  position: fixed;
+  bottom: 0;
+}
+.fixed_bottom {
+  width: 84.8vw;
+  height: 10.14vw;
+  background-color: #fbfbfb;
+  display: flex;
+  justify-content: space-between;
+  padding: 2.93vw 7.6vw 1vw 7.6vw;
+  text-align: center;
+  font-size: 2.4vw;
+  color: #555555;
+}
+.fixed_bottom .item img {
+  width: 5.6vw;
+  height: 5.07vw;
+}
+.back_gauge {
+  margin-top: 2.67vw;
+}
+.placeholder {
+  height: 43.6vw;
+}

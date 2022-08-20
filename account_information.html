@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>账户资料</title>
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/account_information.css">
+	</head>
+	<body>
+		<header class="header">
+			<img class="arrow" src="./img/my_favorite/img-1_10.png" alt="">
+			<span class="title">账户资料</span>
+		</header>
+		<div class="background">
+			<div class="head_portrait"><img src="" alt=""></div>
+			<input type="file">
+			<form>
+				<ul>
+					<li>
+						<span class="text_pay">昵称</span>
+						<input type="text"  name="nickname">
+					</li>
+					<li>
+						<span class="text_pay">性别</span>
+					<div class="radio_sex_box">
+						<div>
+							<input class="select_sex" name="sex" type="radio" value="男">
+							<span class="text_sex">男</span>
+						</div>
+						<div>
+							<input class="select_sex" name="sex" type="radio" value="女">
+							<span class="text_sex" >女</span>
+						</div>
+					</div>
+					</li>
+					<li>
+						<span class="text_pay">手机</span>
+						<input type="text" name="tel">
+					</li>
+				</ul>
+			</form>
+			
+			<div class="Payment">保存修改</div>
+		</div>
+		<script src="./js/axios.min.js"></script>
+		<script src="./js/axios.config.js"></script>
+		<script src="./js/utils.js"></script>
+		<script>
+			var oPhoto = document.querySelector('.background .head_portrait img')
+			var oNickname = document.querySelector('input[name="nickname"]')
+			var oSex = document.querySelectorAll('input[name="sex"]')
+			var oFile =document.querySelector('input[type="file"]')
+			var oPayment = document.querySelector('.Payment')
+			axios.get('/user/info').then(function(res){
+				if(res.status){
+					console.dir(oFile)
+					oPhoto.setAttribute('src',res.data.avatar)
+					oSex.forEach(function(item){
+						if(item.value === res.data.sex){
+							item.checked = true
+						}
+					})
+
+				}
+			})
+			oFile.addEventListener('change',function(){
+				// 获取File对象
+				var file = this.files[0]
+				var formData = new FormData()
+				formData.append('file',file);
+				formData.append('type','avatar')
+				axios.post('./upload/common',formData).then(function(res){
+					if(res.status){
+						console.log(res)
+					}
+				}).catch(function(err){
+					console.log(err)
+				})
+			})
+			oPayment.addEventListener('click',function(){
+				axios.post('/user/edit')
+			})
+		</script>
+	</body>
+</html>

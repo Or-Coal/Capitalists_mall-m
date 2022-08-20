@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/commodity_particulars.css">
+    <link rel="stylesheet" href="./lib/swiper/css/swiper-bundle.min.css">
+    <title>商品详情页</title>
+</head>
+
+<body>
+   
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/axios.config.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./lib/swiper/js/swiper-bundle.min.js"></script>
+
+    <script>
+        var uid = sessionStorage.id
+        var id = params('id')
+
+        if (uid) {
+            axios.get("/goods/detail", { params: { id, uid } }).then(function (res) {
+                console.log(res)
+                if (res.status) {
+                    slider = res.data.slider.split(',')
+                    var str_head_top = ''
+                    console.log(slider)
+                    slider.forEach(function (item) {
+                        console.log(item)
+                        str_head_top += `
+                        <div class="swiper-slide">
+                    <img class="commodity_banner" src="${item}" alt="">
+                </div>`
+                    })
+
+                    var str = `<div class="header">
+        <img class="icon_get" onclick="history.back()" src="./img/commodity_particulars/img_11.png" alt="">
+        <div><span class="text_merchandise">商品</span><span class="text_particulars">详情</span></div>
+        <div>
+            <img class="icon_homepage" src="./img/commodity_particulars/img_17.png" alt="">
+            <img class="icon_back" src="./img/commodity_particulars/img_20.png" alt="">
+        </div>
+    </div><div class="commodity_introduce">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="content">
+            <div class="content_left">
+                <div class="title">${res.data.name}</div>
+                <div class="text">夏季凉被，冬季暖套，四季可用</div>
+                <div class="price">￥${res.data.price}</div>
+            </div>
+            <div class="content_right">
+                <div class="quantity">469</div>
+                <div class="evaluate_text">用户评价</div>
+                <div class="examine">查看</div>
+            </div>
+        </div>
+    </div>
+    <div class="gray_block"></div> <div class="single_list">
+        <div class="single_text">
+            <div>规格数量选择</div><img src="./img/commodity_particulars/arrow_03.png" alt="">
+        </div>
+        <div class="single_text">
+            <div>1个促销：<span>120款爆品满3件8折</span></div><img src="./img/commodity_particulars/arrow_03.png" alt="">
+        </div>
+        <div class="single_text">
+            <div>积分：购买最高可得59积分</div>
+        </div>
+        <div class="single_content">
+            <div class="text">
+                <div class="text_serve">服务：</div>
+                <div class="text_carefree">30天无忧退换货</div>
+                <div class="text_refund">48小时快速退款</div>
+                <div class="text_free_shipping">满88元免邮费</div>
+            </div>
+            <img class="arrows_right" src="./img/commodity_particulars/arrow_03.png" alt="">
+        </div>
+    </div>
+    <div class="gray_block"></div>
+    <div class="user_evaluation">
+        <div class="evaluation_title">
+            <div class="title">用户评价：(536)</div>
+            <div class="content">99.1% 好评<img src="./img/commodity_particulars/arrow_03.png" alt=""></div>
+        </div>
+        <div class="evaluation_show">
+            <div>
+                <img class="user" src="./img/commodity_particulars/img_06.jpg" alt="">
+                <img class="star_level" src="./img/commodity_particulars/img_03.jpg" alt="">
+            </div>
+            <div class="date">2017.12.4 10：20 灰紫：1.8M</div>
+            <div class="content">质感相当不错，很舒服，本人比较喜欢</div>
+            <div><img class="evaluation_img" src="${res.data.img_md}" alt=""></div>
+        </div>
+    </div>
+    <div class="gray_block"></div><div class="commodity_details">
+        <div class="title">商品详情</div>
+        <div class="showcase_one">
+            <img class="showcase_big_img" src="${slider[0]}" alt="">
+            <div class="introduction_one">窗边响起一阵蝉鸣</div>
+            <div class="introduction_two">转身抱紧被子,夏日午后,正当酣眠</div>
+        </div>
+        <div class="showcase_two">
+            <img class="showcase_big_img" src="${slider[1]}" alt="">
+            <div class="title_showcase">一被多用</div>
+            <div class="text_showcase">可以做春凉被的四件套</div>
+        </div>
+        <div class="showcase_three">
+            <img src="${slider[0]}" alt="">
+            <img src="${slider[1]}" alt="">
+        </div>
+    </div>
+    <div class="fixed_purchase">
+        <div class="icon"><img src="./img/commodity_particulars/img_14.png" alt=""></div>
+        <div class="icon"><img src="./img/commodity_particulars/img_26.png" alt=""></div>
+        <div class="icon collect"><img src="${res.data.isCollected?"./img/commodity_particulars/xing_03.png":"./img/commodity_particulars/img_23.png"}" alt=""></div>
+        <div class="shopping_trolley">加入购物车</div>
+        <div class="purchase">立即购买</div>
+    </div> <div class="fixed_assist"></div>
+    <div class="pop-up_lucency">
+        <div class="pop-up">
+            <div class="pop-up_head">
+                <img class="pop-up_img" src="${res.data.img_md}" alt="图片加载失败">
+                <div class="content">
+                    <div class="price">价格：￥${res.data.price}</div>
+                    <div class="text">请选择规格属性</div>
+                </div>
+            </div>
+            <div class="parameter_color">
+                <div class="title">颜色</div>
+                <div class="property_box">
+                    <span class="chexked_property">灰紫</span>
+                    <span class="not_property">浅咖色</span>
+                </div>
+            </div>
+            <div class="parameter_size">
+                <div class="title">尺寸</div>
+                <div class="property_box">
+                    <span class="not_property">1.2M</span>
+                    <span class="chexked_property">1.8M</span>
+                </div>
+            </div>
+            <div class="parameter_quantity">
+                <div class="title">数量</div>
+                <div class="property_box">
+                    <span class="subtract">-</span>
+                    <span class="value">1</span>
+                    <span class="add">+</span>
+                </div>
+            </div>
+            <div></div>
+            <div class="ack_button">确认</div>
+            <img class="close" src="./img/commodity_particulars/popup_03.jpg" alt="图片加载失败">
+        </div>
+    </div>`
+                    var oBody = document.querySelector('body')
+                    oBody.insertAdjacentHTML('afterbegin', str)
+                    var oMySwiper = document.querySelector('.commodity_introduce .swiper-wrapper')
+                    oMySwiper.insertAdjacentHTML('afterbegin', str_head_top)
+                    var oAddShopping = document.querySelector(".fixed_purchase .shopping_trolley")
+                    var oPurchase = document.querySelector(".fixed_purchase .purchase")
+                    var oPopUpLucency = document.querySelector(".pop-up_lucency")
+                    var oClose = document.querySelector(".pop-up_lucency .close")
+                    oAddShopping.addEventListener('click', function () {
+                        var isProperty = getComputedStyle(oPopUpLucency).display
+                        if (isProperty === "none") {
+                            oPopUpLucency.style.display = "block"
+                        }
+                        var oSubtract = document.querySelector('.property_box .subtract')
+                    var oValue = document.querySelector('.property_box .value')
+                    var oAdd = document.querySelector('.property_box .add')
+                    oSubtract.addEventListener('click',function(){
+                        if(oValue.innerText > 1){
+                            oValue.innerText -=1 
+                        }
+                    })
+                    oAdd.addEventListener('click',function(){
+                        oValue.innerText = parseInt(oValue.innerText)+1
+                    })
+                    var oAckButton = document.querySelector('.pop-up .ack_button')
+                    oAckButton.addEventListener('click',function(){
+                        axios.post('/cart/add',{gid:id,num:oValue.innerText}).then(function(res){
+                            if(res.status){
+                                location.assign('./shopping_trolley.html')
+                            }
+                        })
+                    })
+                    })
+                    oPurchase.addEventListener('click', function () {
+                        var isProperty = getComputedStyle(oPopUpLucency).display
+                        if (isProperty === "none") {
+                            oPopUpLucency.style.display = "block"
+                        }
+                    })
+                    oClose.addEventListener('click', function () {
+                        oPopUpLucency.style.display = "none"
+                    })
+                    var swiper = new Swiper(".mySwiper", {
+                        pagination: {
+                            el: ".swiper-pagination",
+                            dynamicBullets: true,
+                        },
+                    });
+                    var oCollect =document.querySelector(".fixed_purchase .collect")
+                    oCollect.addEventListener('click',function(){
+                        if(!res.data.isCollected){
+                            axios.post('/collection/add',{id})
+                            location.reload()
+                        }else{
+                            axios.post('/collection/remove',{id})
+                           location.reload()
+                        }
+                    })
+                    
+                }
+            })
+        }
+          
+    </script>
+</body>
+
+</html>

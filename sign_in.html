@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>注册页面</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/sign_in.css">
+</head>
+
+<body>
+	<div class="register_box">
+		<div class="logo">
+			<img src="./img/register/img-1_03.png" alt="">
+		</div>
+		<input id="username" class="name input_style item" type="text" placeholder="请输入用户名">
+		<div class="sex_box item">
+			<label class="text" for="">性别:</label>
+			<input name="sex" checked class="sex_radio man" type="radio"><span>男</span>
+			<input name="sex" class="sex_radio woman" type="radio"><span>女</span>
+		</div>
+		<input id="password" class="password input_style item" type="password" placeholder="密码">
+		<input id="password_affirm" class="password_repetition input_style item" type="password" placeholder="请再次输入密码">
+		<div class="cell_phone relative">
+			<span class="content"><span>+86</span><img src="./img/sign_in/img-1_03.png" alt=""></span>
+			<input id="phone" class="input_style item phone" placeholder="电话号码" type="text">
+		</div>
+		<div class="type_captcha">
+			<input class="input_style item verification" placeholder="验证码" type="text">
+			<div class="gain">获取验证码</div>
+		</div>
+
+		<div class="button_new_folder">注册</div>
+		<div class="agreement">注册即代表同意《本家网络服务协议》</div>
+
+
+	</div>
+	<script src="./js/axios.min.js"></script>
+	<script src="./js/axios.config.js"></script>
+	<script>
+		var oUsername = document.querySelector("#username")
+		var oPassword = document.querySelector("#password")
+		var oPasswordAffirm = document.querySelector("#password_affirm")
+		var woman = document.querySelector(".sex_radio.woman")
+		var man = document.querySelector(".sex_radio.man")
+		var oPhone = document.querySelector("#phone")
+		var oRegister = document.querySelector(".button_new_folder")
+		var username_regular = /\w{3,}/
+		var password_regular = /\d{3,}/
+		var phone_regular = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
+		var username_hint = "请输入至少三个字符"
+		var password_hint = "请输入至少三个数字"
+		var phone_hint = "请输入正确手机号码"
+		function validate_form(input_field, str_regular, hint) {
+			input_field.addEventListener('change', function () {
+				var us_content = input_field.value
+				var result = str_regular.test(us_content)
+				if (result) {
+					input_field.style.borderColor = "green"
+				} else {
+					input_field.style.borderColor = "red"
+					alert(hint)
+				}
+				this.state = result
+			})
+		}
+		oPasswordAffirm.addEventListener('change', function () {
+			if (oPassword.value === oPasswordAffirm.value) {
+				oPasswordAffirm.style.borderColor = "green"
+			} else {
+				oPasswordAffirm.style.borderColor = "red"
+				alert('两次密码不相同，请重新输入')
+			}
+		})
+		validate_form(oUsername, username_regular, username_hint)
+		validate_form(oPassword, password_regular, password_hint)
+		validate_form(oPhone, phone_regular, phone_hint)
+		oRegister.addEventListener('click', function () {
+			if (oUsername.state && oPassword.state && oPhone.state) {
+				var name = oUsername.value
+				var pwd = oPassword.value
+				var phone = oPhone.value
+				var sex = ""
+				if (man.checked) {
+					sex = "男"
+				} else {
+					sex = "女"
+				}
+				axios.post("/user/register", {
+					username: name,
+					password: pwd,
+					sex,
+					tel: phone
+				}).then(function (res) {
+					if (res.status) {
+						alert("注册成功")
+						location.assign("./register.html")
+					} else {
+						alert("用户已存在,请重新输入用户名。")
+					}
+				})
+			} else {
+				alert('请先填写完基本信息')
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/classify.css">
+    <title>分类</title>
+</head>
+
+<body>
+    <div class="head_search relative">
+        <input class="search_frame" type="text" placeholder="搜索商品,共10000款好物">
+        <img class="search_icon absolute" src="./img/classify/search_03.png" alt="">
+    </div>
+    <div class="classify_body">
+        <div class="classify_left">
+            <ul class="nav relative">
+            </ul>
+        </div>
+        <div class="classify_right">
+            <img class="classify_banner" src="./img/classify/img_03.jpg" alt="图片加载失败">
+            <div class="title"><span class="line"></span>女生分类<span class="line"></span></div>
+            <ul class="commodity_images">
+                <li><img class="classify_photo" src="./img/classify/1.jpg" alt="">
+                    <div class="text">衬衫</div>
+                </li>
+                <li><img class="classify_photo" src="./img/classify/2.jpg" alt="">
+                    <div class="text">T恤</div>
+                </li>
+                <li><img class="classify_photo" src="./img/classify/3.jpg" alt="">
+                    <div class="text">连衣裙</div>
+                </li>
+                <li><img class="classify_photo" src="./img/classify/4.jpg" alt="">
+                    <div class="text">卫衣</div>
+                </li>
+                <li><img class="classify_photo" src="./img/classify/5.jpg" alt="">
+                    <div class="text">大衣</div>
+                </li>
+                <li><img class="classify_photo" src="./img/classify/6.jpg" alt="">
+                    <div class="text">裤装</div>
+                </li>
+                <li><img class="classify_photo" src="./img/classify/7.jpg" alt="">
+                    <div class="text">家居服</div>
+                </li>
+                <li><img class="classify_photo" src="./img/classify/8.jpg" alt="">
+                    <div class="text">羽绒服</div>
+                </li>
+                <li><img class="classify_photo" src="./img/classify/9.jpg" alt="">
+                    <div class="text">鞋靴</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="fixed_bottom">
+        <a href="./index.html"><div class="item"><img src="./img/classify/img_1.png" alt="">
+            <div class="text">首页</div>
+        </div></a>
+        <a href="optimization.html"><div class="item"><img src="./img/classify/img_2.png" alt="">
+            <div class="text">优选</div>
+        </div></a>
+        <a href="classify.html"><div class="item"><img src="./img/classify/img_3.png" alt="">
+            <div class="text">分类</div>
+        </div></a>
+        <a href="shopping_trolley.html"><div class="item"><img src="./img/classify/img_4.png" alt="">
+            <div class="text">购物车</div>
+        </div></a>
+        <a href="./personal_center.html"><div class="item"><img src="./img/classify/img_5.png" alt="">
+            <div class="text">我的</div>
+        </div></a>
+    </div>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/axios.config.js"></script>
+    <script>
+        var oNav = document.querySelector('.classify_left .nav')
+        var oClassifyList = document.querySelector('.classify_body .classify_right .commodity_images')
+        function navList() {
+            axios.get("/category/sub", {
+                params: {
+                    pId: 1
+                }
+            }).then(function (res) {
+                if (res.status) {
+                    var str = ''
+                    res.data.forEach(function (item) {
+                        str += `<li class="list relative" data-id="${item.id}">${item.name}</li>`
+                    })
+                    oNav.innerHTML = str
+                    var oStairDefault = document.querySelector('ul.nav li')
+                    oStairDefault.insertAdjacentHTML('afterbegin', '<span class="checked absolute">')
+                    oStairDefault.classList.add("red")
+                    axios.get("/category/sub", {
+                        params: {
+                            pId: res.data[0].id
+                        }
+                    }).then(function (res) {
+                        if (res.status) {
+                            var str = ''
+                            res.data.forEach(function (item) {
+                                str += ` <li><a href="./good_list.html?id=${item.id}&level=2"><img class="classify_photo" src="${item.img}" alt="">
+                    <div class="text">${item.name}</div></a>
+                </li>`
+                            })
+                            oClassifyList.innerHTML = str
+                        }
+                    })
+                }
+            })
+        }
+        navList()
+        oNav.addEventListener('click', function (e) {
+            if (e.target.matches(".list")) {
+                var oChecked = document.querySelector(".list .checked")
+                var oRed = document.querySelector(".red")
+                if (oChecked) oChecked.remove()
+                if (oRed) oRed.classList.remove('red')
+                e.target.insertAdjacentHTML('afterbegin', '<span class="checked absolute">')
+                e.target.classList.add("red")
+                axios.get("/category/sub", {
+                    params: {
+                        pId: e.target.dataset.id
+                    }
+                }).then(function (res) {
+                    if (res.status) {
+                        var str = ''
+                        console.log(res)
+                        res.data.forEach(function (item) {
+                            str += ` <li><a href="./good_list.html?id=${item.id}&level=2"><img class="classify_photo" src="${item.img}" alt="">
+                    <div class="text">${item.name}</div></a>
+                </li>`
+                        })
+                        oClassifyList.innerHTML = str
+                    }
+                })
+            }
+        })
+        var oSearch = document.querySelector('.head_search .search_frame')
+        oSearch.onfocus = function(){
+            location.assign('./search.html')
+        }
+    </script>
+</body>
+
+</html>

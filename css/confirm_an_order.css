@@ -1,0 +1,138 @@
+.relative{
+    position: relative;
+    font-size: 4.27vw;
+	color: #555555;
+}
+.header{
+    padding:3.47vw 41.07vw;
+    border-bottom: 0.13vw solid #cecece;
+}
+.header .arrow_back{
+    position: absolute;
+    left: 5.2vw;
+    top: 3.33vw;
+    width: 2.67vw;
+	height: 4.67vw;
+}
+.address_choose{
+    padding: 4vw 2.8vw;
+    font-size: 3.73vw;
+	color: #555555;
+}
+.address_choose .arrow_address_choose{
+    width: 2.53vw;
+	height: 4.53vw;
+    position: absolute;
+    top: 3.6vw;
+    right: 2.8vw;
+}
+.address_content{
+    padding: 2.93vw 1.9vw;
+    background-color: #f4f4f4;
+    line-height: 0;
+}
+.address_content .harvest_address{
+    background-color: #fff;
+    padding: 4.27vw 3.73vw;
+}
+.harvest_address .stripe{
+    width: 94.4vw;
+    top: -4.27vw;
+    left: -3.73vw;
+}
+.harvest_address .message{
+    line-height: 3.73vw;
+    font-size: 3.73vw;
+    color: #333333;
+    display: flex;
+    justify-content: space-between;
+}
+.harvest_address .order_address{
+    line-height: 3.2vw;
+    font-size: 3.2vw;
+	color: #666666;
+    margin-top: 5.47vw;
+}
+.message .default{
+    border-radius: 0.67vw;
+	border: solid 0.13vw #c55a5c;
+    font-size: 2.67vw;
+	color: #c55a5c;
+    padding: 0.67vw 2.13vw;
+}
+.order_item li{
+padding: 3.47vw 3.33vw 0 3.33vw;
+
+}
+.order_item .list{
+display: inline-block;
+}
+.order_item .list_img{
+    width: 21.47vw;
+	height: 22.13vw;
+vertical-align: top;
+}
+.order_item .title{
+    font-size: 3.47vw;
+	color: #555555;
+    padding-left: 2.67vw;
+    width: 52vw;
+
+}
+.order_item .quantity{
+    font-size: 3.2vw;
+	color: #999999;
+    margin: 3vw 0 1.87vw 0;
+    padding-left: 2.67vw;
+}
+.order_item .price{
+    font-size: 3.2vw;
+	color: #999999;
+    padding-left: 2.67vw;
+
+}
+.order_item .list_box{
+padding-bottom: 3.47vw;
+border-bottom: 0.13vw solid #cecece;
+
+}
+.option{
+    padding: 4.67vw 2.8vw 0 2.8vw;
+}
+.option .option_line{
+    padding-bottom: 4.67vw;
+border-bottom: 0.13vw solid #cecece;
+display: flex;
+justify-content: space-between;
+
+}
+.option_line .remark{
+    width: 85%;
+    border: none;
+    border-bottom:  0.13vw solid #cecece;
+}
+.total{
+    position: fixed;
+    bottom: 0;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+}
+.total .total_price{
+    padding: 4.53vw 0 4.53vw 2.67vw;
+    font-size: 4vw;
+	color: #c55a5c;
+}
+.total .button_order{
+    padding: 4.27vw 11.73vw;
+    font-size: 3.73vw;
+	color: #ffffff;
+    background-color: #c55a5c;
+}
+.unfinished_order{
+    background-color: #999999;
+    color: #c55a5c;
+    font-size: 5vw;
+    padding: 3.33vw 13vw;
+}

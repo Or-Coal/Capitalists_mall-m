@@ -1,0 +1,110 @@
+.header .arrow {
+  width: 2.67vw;
+  height: 4.67vw;
+  position: absolute;
+  top: 50%;
+  left: 2.93vw;
+  transform: translateY(-50%);
+}
+.header .title {
+  font-size: 3.73vw;
+  color: #555555;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+  padding: 2.4vw 2.93vw;
+}
+.add_the_address_from input {
+  border: none;
+}
+.add_the_address_from .name,
+.add_the_address_from .phone {
+  font-size: 3.73vw;
+  color: #666666;
+  padding: 2.47vw 0 0 2.93vw;
+  margin-right: 5.47vw;
+}
+.add_the_address_from .name {
+  margin-right: 9.47vw;
+}
+
+.add_the_address_from .name + input {
+  padding: 3.47vw 26.1vw 3.47vw 2vw;
+  font-size: 4vw;
+}
+
+.add_the_address_from .phone + input {
+  padding: 3.47vw 26.37vw 3.47vw 2vw;
+  font-size: 4vw;
+}
+.select_address {
+  border: 0.1vw solid #999;
+  width: 30.8vw;
+  height: 6.13vw;
+}
+.select_address_box {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  padding: 2vw 2vw;
+  font-size: 4vw;
+}
+.select_address_box .department {
+  margin-right: 10.5vw;
+  padding-top: 2.47vw;
+  color: #666666;
+}
+.select_address_box .select_address.select_address:nth-child(2n) {
+  margin-right: 8vw;
+  width: 31vw;
+  height: 6vw;
+}
+.select_address_box .province,
+.select_address_box .city {
+  margin-bottom: 3vw;
+}
+.detailed_address {
+  padding: 3vw 6.08vw 0 3vw;
+  font-size: 4vw;
+  color: #666666;
+  position: absolute;
+}
+.detailed_address_textarea {
+  width: 73vw;
+  height: 23vw;
+  border: none;
+  margin-left: 26vw;
+}
+.button_new_folder {
+  display: inline-block;
+  text-align: center;
+  padding: 3.2vw 43vw;
+  background-color: #c55a5c;
+  border-radius: 0.53vw;
+  font-size: 3.73vw;
+  color: #ffffff;
+  position: fixed;
+  bottom: 4.13vw;
+  left: 2.8vw;
+  border: 0;
+}
+.add_the_address_from .item {
+  border-bottom: 0.1vw solid #999;
+  padding: 0.5vw 0;
+}
+.add_the_address_from .item:nth-child(1) {
+  border-top: 0.1vw solid #999;
+}
+.add_the_address_from .item:last-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2.47vw;
+}
+.add_the_address_from .choice_box {
+  margin-top: 2.47vw;
+  width: 4vw;
+  height: 4vw;
+}

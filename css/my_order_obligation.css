@@ -1,0 +1,129 @@
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.header {
+  border-bottom: 0.13vw solid #eeeeee;
+}
+.header .arrows_left {
+  width: 2.67vw;
+  height: 4.67vw;
+  top: 3.73vw;
+  left: 2.8vw;
+}
+.header .title {
+  display: inline-block;
+  font-size: 3.73vw;
+  color: #555555;
+  padding: 3.6vw 42.53vw 4.8vw;
+}
+.nav {
+  padding: 2.67vw 2.67vw 0;
+}
+.nav .item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 3.73vw;
+  color: #545353;
+}
+.nav li{
+  padding-bottom:2.13vw;
+}
+.content_body {
+  padding: 4vw 2.67vw;
+  background-color: #eee;
+}
+.content_body .commodity_list {
+  background-color: #fff;
+  padding: 2.8vw 2.93vw 3.2vw 2.93vw;
+  margin-bottom: 3.07vw;
+}
+.content_body .header_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.13vw solid #eee;
+  padding-bottom: 2.8vw;
+}
+.content_body .text {
+  font-size: 3.2vw;
+  color: #c55a5c;
+}
+.content_body .time {
+  font-size: 2.84vw;
+  color: #999999;
+}
+.commodity_parameters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2.53vw;
+  border-bottom: 0.13vw solid #eee;
+  margin-bottom: 2vw;
+}
+.commodity_parameters .commodity {
+  width: 22.27vw;
+}
+.commodity_parameters .title_subject {
+  width: 62.67vw;
+  font-size: 3.47vw;
+  color: #333333;
+  margin-bottom: 3.47vw;
+}
+.commodity_parameters .commodity_parameters_content {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3.47vw;
+  align-items: center;
+}
+.commodity_parameters_content .capacity {
+  font-size: 3.2vw;
+  color: #aaaaaa;
+}
+.commodity_parameters_content .price {
+  font-size: 3.2vw;
+  color: #666666;
+}
+.commodity_parameters .quantity_box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 2.13vw;
+  color: #999999;
+}
+.commodity_list .total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 3.2vw;
+  color: #383636;
+  margin-bottom: 4.13vw;
+}
+.commodity_list .total span {
+  font-size: 3.2vw;
+  color: #c55a5c;
+}
+.commodity_list .operation_list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.operation_list .cancellation_order {
+  font-size: 3.2vw;
+  color: #383636;
+  border-radius: 2.93vw;
+  border: solid 0.13vw #aaaaaa;
+  display: inline-block;
+  padding: 1.47vw 4.13vw;
+  margin-right: 2.8vw;
+}
+.operation_list .at_once_payment {
+  font-size: 3.2vw;
+  color: #c55a5c;
+  display: inline-block;
+  border-radius: 2.93vw;
+  border: solid 0.13vw #c55a5c;
+  padding: 1.47vw 4.13vw;
+}

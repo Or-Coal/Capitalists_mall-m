@@ -1,0 +1,71 @@
+.header .arrow {
+	width: 2.67vw;
+	height: 4.67vw;
+	position: absolute;
+	top: 50%;
+	left: 2.93vw;
+	transform: translateY(-50%);
+}
+
+.header .title {
+	font-size: 3.73vw;
+	color: #555555;
+}
+
+.header {
+	position: relative;
+	text-align: center;
+	padding: 2.4vw 2.93vw;
+	background-color: #fbfbfb;
+}
+.background{
+	background-color: #f4f4f4;
+	padding-top: 2.67vw;
+}
+.background ul{
+	width: 100vw;
+	background-color: #fff;
+}
+.background li{
+	padding: 4.53vw 2.93vw 4.8vw 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #cecece;
+	background-color: #fff;
+	margin: 0 2.93vw;
+}
+.background li .arrow_right{
+	width: 2.13vw;
+		height: 3.73vw;
+}
+.background .text_pay{
+	font-size: 3.73vw;
+		color: #777777;
+}
+.Payment{
+	padding: 4.53vw 38.67vw;
+		background-color: #c55a5c;
+		border-radius: 1.33vw;
+		font-size: 4.27vw;
+			color: #ffffff;
+			position: absolute;
+			bottom: 22.67vw;
+			left: 2.85vw;
+}
+.background li .red_ellipse{
+		width: 13.33vw;
+		height: 6vw;
+		background-color: #c55a5c;
+		border-radius: 2.93vw;
+		border: solid 0.13vw #a35456;
+		display: flex;
+		justify-content: flex-end;
+}
+.background li .white_circle{
+	width: 5.73vw;
+		height: 6vw;
+		border-radius:50% ;
+		background-color: #ffffff;
+		position: relative;
+}

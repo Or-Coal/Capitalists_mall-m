@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>编辑地址</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/add_the_address.css">
+</head>
+
+<body>
+	<header class="header">
+		<img onclick="history.back()" class="arrow" src="./img/my_favorite/img-1_10.png" alt="">
+		<span class="title">添加地址</span>
+	</header>
+	<div class="add_the_address_from">
+		<form class="address_form">
+			<div class="item">
+				<label class="name">收货人:</label>
+				<input type="text" name="name" placeholder="请输入收货人姓名" pattern="/.+/" data-error="请输入至少一个字符姓名">
+			</div>
+			<div class="item">
+				<label class="phone">手机号码:</label>
+				<input type="text" name="tel" placeholder="请输入收货人手机号码"
+					pattern="/^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/"
+					data-error="请输入正确的手机号">
+			</div>
+
+			<div class="select_address_box item">
+				<label class="department">所在地区:</label>
+				<select class="select_address province" name="province_id" id="province">
+				</select>
+				<select class="select_address city" name="city_id" id="city">
+				</select>
+				<select class="select_address" name="county_id" id="district">
+				</select>
+				<select class="select_address" name="town_id" id="street">
+				</select>
+
+
+			</div>
+			<div class=".detailed_address_box item">
+				<label class="detailed_address">详细地址</label>
+				<textarea class="detailed_address_textarea" name="street" cols="30" rows="10" pattern="/.+/"
+					data-error="请输入详细地址"></textarea>
+			</div>
+			<div class="item">
+				<label class="phone">邮政编码:</label>
+				<input type="text" name="code" placeholder="请输入邮政编码" pattern="/^[1-9]\d{5}$/" data-error="请输入正确的邮政编码">
+			</div>
+
+			<div class="item">
+				<label class="phone">默认地址:</label>
+				<input class="choice_box" name="isDefault" type="checkbox">
+			</div>
+		</form>
+		<button class="Save_the_changes" type="button">保存修改</button>
+	</div>
+	<script src="./js/axios.min.js"></script>
+	<script src="./js/axios.config.js"></script>
+	<script src="./js/utils.js"></script>
+	<script>
+		// 查找元素
+		var oProvince = document.querySelector('select[name="province_id"]');
+		var oCity = document.querySelector('select[name="city_id"]');
+		var oCounty = document.querySelector('select[name="county_id"]');
+		var oTown = document.querySelector('select[name="town_id"]');
+       
+		// 监听省，获取市
+		oProvince.onchange = function (event, id, defaultValue) {
+			// 判断id传参是否存在？不存在，pid = 选中的省份id
+			var pid = id ? id : this.value;
+			// 获取市
+			axios.get('/pcct/city', { params: { id: pid } })
+				.then(function (res) {
+					if (res.status) {
+						var html = '';
+						res.data.forEach(function (item) {
+							html += `<option value="${item.city_id}">${item.name}</option>`;
+						});
+						oCity.innerHTML = html;
+						if (defaultValue) {
+							oCity.value = defaultValue
+						} else {
+							// 触发市的change事件
+							oCity.trigger('change');
+						}
+					}
+				});
+		};
+		// 监听市，获取区
+		oCity.onchange = function (event, id, defaultValue) {
+			// 判断id传参是否存在？不存在，pid = 选中的市id
+			var cid = id ? id : this.value;
+			// 获取市
+			axios.get('/pcct/county', { params: { id: cid } })
+				.then(function (res) {
+					if (res.status) {
+						var html = '';
+						res.data.forEach(function (item) {
+							html += `<option value="${item.county_id}">${item.name}</option>`;
+						});
+						oCounty.innerHTML = html;
+						if (defaultValue) {
+							oCounty.value = defaultValue
+						} else {
+							// 触发市的change事件
+							oCounty.trigger('change');
+						}
+					}
+				});
+		};
+		// 监听区，获取街道
+		oCounty.onchange = function (event, id, defaultValue) {
+			// 判断id传参是否存在？不存在，pid = 选中的区id
+			var cid = id ? id : this.value;
+			// 获取市
+			axios.get('/pcct/town', { params: { id: cid } })
+				.then(function (res) {
+					if (res.status) {
+						var html = '';
+						res.data.forEach(function (item) {
+							html += `<option value="${item.town_id}">${item.name}</option>`;
+						});
+						oTown.innerHTML = html;
+						if (defaultValue) {
+							oTown.value = defaultValue
+						}
+					}
+				});
+		};
+	</script>
+	<script>
+		// 查找元素
+		var oName = document.querySelector('input[name="name"]');
+		var oTel = document.querySelector('input[name="tel"]');
+		var oStreet = document.querySelector('textarea[name="street"]');
+		var oCode = document.querySelector('input[name="code"]');
+		var oIsDefault = document.querySelector('input[name="isDefault"]');
+		// 获取地址栏参数
+		var id = params('id');
+		// 获取省份
+		axios.get('/pcct/province')
+			.then(function (res) {
+				if (res.status) {
+					var html = '';
+					res.data.forEach(function (item) {
+						html += `<option value="${item.province_id}">${item.name}</option>`;
+					});
+					oProvince.innerHTML = html;
+					// 获取地址详情
+					axios.get('/address', { params: { id: id } })
+						.then(function (res) {
+							if (res.status) {
+								// 还原表单
+								oName.value = res.data.name;
+								oTel.value = res.data.tel;
+								oStreet.value = res.data.street;
+								oCode.value = res.data.code;
+								oIsDefault.defaultChecked = (res.data.isDefault === 1);
+								// 还原省份
+								oProvince.value = res.data.province_id;
+								// 还原市
+								oProvince.onchange(undefined, res.data.province_id, res.data.city_id);
+								// 还原区
+								oCity.onchange(undefined, res.data.city_id, res.data.county_id);
+								// 还原县、街道
+								oCounty.onchange(undefined, res.data.county_id, res.data.town_id);
+							} else {
+								alert(res.msg);
+							}
+						});
+				}
+			});
+			var oAddressForm = document.querySelector(".address_form")
+			var oSaveButton = document.querySelector(".Save_the_changes")
+			oSaveButton.addEventListener('click', function () {
+			// 表单验证
+			var data = serialize(oAddressForm)
+			data.id = id
+			data.isDefault = data.isDefault ? 1 : 0
+			console.log(data)
+			axios.post("/address/edit", data).then(function (res) {
+				alert(res.msg)
+				if (res.status) {
+             history.back()
+				}
+			})
+
+		})
+	</script>
+</body>
+
+</html>

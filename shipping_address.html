@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>收货地址</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/shipping_address.css">
+</head>
+
+<body>
+	<header class="header">
+		<img onclick="history.back()" class="arrow" src="./img/my_favorite/img-1_10.png" alt="">
+		<span class="title">收货地址</span>
+	</header>
+
+	<ul class="shipping_address">
+	</ul>
+	<a href="./add_the_address.html">
+		<div class="button_new_folder">新建收货地址</div>
+	</a>
+	<script src="./js/axios.min.js"></script>
+	<script src="./js/axios.config.js"></script>
+	<script src="./js/utils.js"></script>
+	<script>
+
+		var oAddressList = document.querySelector("ul.shipping_address")
+		axios.get("/address/list").then(function (res) {
+			if (res.status) {
+				console.log(res)
+				res.data.forEach(function (item) {
+					var address = `<div class="item_box">
+				<li class="relative">
+					<div class="name_phone_box relative" data-id="${item.id}">
+						<span class="name">${item.name}</span>
+						<span class="phone">${item.tel}</span>
+						${item.isDefault === 1 ? '<span class="cross">默认</span>' : ''}
+					</div>
+					<div class="site">${item.province_name}${item.city_name}${item.county_name}${item.town_name}${item.street}</div>
+					<div class="icon">
+						<a href="./edit_the_address.html?id=${item.id}"><img class="icon_pen" src="./img/shipping_address/receiver_09.png" alt=""></a>
+						<img class="icon_cross" data-id="${item.id}" src="./img/shipping_address/receiver_03.png" alt="">
+					</div>
+				</li>
+			</div>`
+					oAddressList.insertAdjacentHTML("beforeend", address)
+
+				})
+				var oNamePhoneBox = document.querySelectorAll('li .name_phone_box')
+				console.log(oNamePhoneBox)
+				oNamePhoneBox.forEach(function (item) {
+					item.addEventListener('click', function () {
+						console.log(params('redirect'))
+						if (params('redirect')) {
+							sessionStorage.address_id = item.dataset.id
+							history.back()
+						}
+					})
+
+				})
+			}
+		})
+		oAddressList.addEventListener('click', function (e) {
+			var isValid = e.target.matches('.icon_cross')
+			if (!isValid) {
+				return
+			}
+			var isConfirm = confirm("确定删除收货地址吗")
+			if (isConfirm) {
+				var id = e.target.dataset.id
+				axios.post("/address/remove", { id: id }).then(function (res) {
+					if (res.status) {
+						e.target.closest('li').remove()
+						sessionStorage.removeItem('address_id')
+					} else {
+						alert("删除失败")
+					}
+				})
+			}
+		})
+
+	</script>
+</body>
+
+</html>
