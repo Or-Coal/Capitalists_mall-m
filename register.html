@@ -66,18 +66,19 @@
 		validate_form(oPassword, password_regular, password_hint)
 		oLogin.addEventListener('click', function () {
 			if (oUsername.state && oPassword.state) {
-				var name = oUsername.value
-				var pwd = oPassword.value
+				var username = oUsername.value
+				var password = oPassword.value
 				axios.post("/user/login",{
 					username:name,
 					password:pwd
 				}).then(function(res){
-					if (!res.status) {
+					let {status,msg,data:{id,token}} = res
+					if (!status) {
 							//登录失败
-							alert(res.msg)
+							alert(msg)
 						}else{
-							sessionStorage.id = res.data.id
-							sessionStorage.token = res.data.token
+							sessionStorage.id = id
+							sessionStorage.token = token
 							location.assign("./index.html")
 						}
 				})
